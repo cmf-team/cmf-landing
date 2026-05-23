@@ -1,36 +1,36 @@
-// program.jsx — Program detail page (template, Quant fully detailed)
+// program.jsx — Program detail page (template, schools fully detailed)
 
 const PROGRAM_DETAILS = {
   quant: {
-    tag: 'QUANT · TRACK 03',
-    title: 'Quantitative Finance & Derivatives',
-    subtitle: 'From binomial models to Monte Carlo methods',
-    intro: 'A comprehensive review of the key concepts, models and pricing techniques behind modern derivatives — taught with the depth required to read the literature, the rigor to prove the results, and the engineering to ship them on real market data.',
+    tag: 'ADV. QUANT ANALYTICS · TRACK 04',
+    title: 'Advanced Quantitative Analytics',
+    subtitle: 'From financial intuition to rigorous quantitative modeling',
+    intro: 'A comprehensive review of the key concepts, models and pricing techniques behind modern derivatives — for students and professionals in mathematics, computer science, physics and quantitative finance. Taught with the depth required to read the literature, the rigor to prove the results, and the engineering to ship them on real market data.',
     meta: [
       { k: 'Duration',  v: '14 weeks' },
-      { k: 'Format',    v: 'Hybrid · Weekly' },
-      { k: 'Cohort',    v: '07 · Fall 2026' },
-      { k: 'Level',     v: 'Graduate' },
+      { k: 'Format',    v: 'Online · Weekly' },
+      { k: 'Cohort',    v: 'Cohort 2026' },
+      { k: 'Language',  v: 'English' },
     ],
     modules: [
-      { num: '01', title: 'Models', tag: '2 WEEKS',
-        desc: 'Binomial model and Black–Scholes — the two anchors of derivatives pricing, derived from no-arbitrage and martingale arguments.' },
-      { num: '02', title: 'Option Greeks', tag: '1 WEEK',
-        desc: 'Δ (Delta), Γ (Gamma), Θ (Theta), ν (Vega) and their interrelationships — what they measure, how they trade, and why they fail.' },
-      { num: '03', title: 'Volatility', tag: '1 WEEK',
-        desc: 'Historical, implied, and the √T rule. Smile, skew and surface construction with arbitrage-free interpolation.' },
-      { num: '04', title: 'Market Data & Tools', tag: '1 WEEK',
-        desc: 'Option pricing and yield curves in Bloomberg. Hands-on with live tickers, swap curves and vol surfaces from the desk.' },
-      { num: '05', title: 'PDE Approach', tag: '2 WEEKS',
-        desc: 'The Black–Scholes equation and finite-difference methods. Implicit, explicit and Crank–Nicolson schemes in Python.' },
-      { num: '06', title: 'Stochastic Calculus', tag: '2 WEEKS',
-        desc: 'Itô process, martingales, risk-neutral measure and the Fundamental Theorem of Asset Pricing. The machinery, end to end.' },
-      { num: '07', title: 'Advanced Derivatives', tag: '2 WEEKS',
-        desc: 'Barrier options (up/down · in/out), Asian options, American features and the calibration that makes them tradeable.' },
-      { num: '08', title: 'Monte Carlo Methods', tag: '2 WEEKS',
-        desc: 'Pricing and simulation of complex derivatives. Variance reduction, quasi-MC, and Longstaff–Schwartz for early exercise.' },
-      { num: '09', title: 'Capstone', tag: '1 WEEK',
-        desc: 'Ship a calibrated pricer on production-grade data, with documentation, tests and a written defense.' },
+      { num: '01', title: 'Binomial & Black–Scholes Models', tag: '2 WEEKS',
+        desc: 'The two anchors of derivatives pricing, derived from no-arbitrage and martingale arguments.' },
+      { num: '02', title: 'Greeks: Delta, Gamma, Theta, Vega', tag: '1 WEEK',
+        desc: 'What they measure, how they trade, and why they fail — Δ, Γ, Θ, ν and their interrelationships.' },
+      { num: '03', title: 'Volatility & the √T rule', tag: '1 WEEK',
+        desc: 'Historical, implied, smile, skew and surface construction with arbitrage-free interpolation.' },
+      { num: '04', title: 'Bloomberg Option Pricing & Yield Curves', tag: '1 WEEK',
+        desc: 'Hands-on with live tickers, swap curves and vol surfaces from the desk.' },
+      { num: '05', title: 'PDE Methods & Finite Differences', tag: '2 WEEKS',
+        desc: 'The Black–Scholes equation. Implicit, explicit and Crank–Nicolson schemes in Python.' },
+      { num: '06', title: 'Itô Processes, Martingales & Risk-Neutral Measure', tag: '2 WEEKS',
+        desc: 'The machinery, end to end — through to the Fundamental Theorem of Asset Pricing.' },
+      { num: '07', title: 'Feynman–Kac Lemma', tag: '1 WEEK',
+        desc: 'The bridge between PDE and probabilistic representations of derivative prices.' },
+      { num: '08', title: 'Barrier & Asian Options', tag: '2 WEEKS',
+        desc: 'Path-dependent derivatives — up/down · in/out — and the calibration that makes them tradeable.' },
+      { num: '09', title: 'Monte Carlo Pricing & Simulation', tag: '2 WEEKS',
+        desc: 'Variance reduction, quasi-MC, and Longstaff–Schwartz for early-exercise features.' },
     ],
     outcomes: [
       'Price European, American and exotic options with confidence',
@@ -42,125 +42,180 @@ const PROGRAM_DETAILS = {
     audience: [
       'Mathematicians and physicists moving into quant finance',
       'Software engineers joining a trading or pricing team',
-      'Junior quants seeking a rigorous refresher with practice',
-      'Researchers who want to bridge theory and the desk',
+      'Computer scientists with a strong analytical background',
+      'Junior quants and researchers seeking a rigorous refresher',
     ],
     instructors: [
-      { initials: 'AL', name: 'Dr. Andrei Lupescu', role: 'Lead Instructor', bio: '15 years on the rates desk. PhD in stochastic analysis, ETH Zürich.' },
-      { initials: 'NB', name: 'Dr. Nadia Bensaïd',  role: 'Co-instructor',  bio: 'Former head of vol modelling at a top-tier market maker. Author of two textbooks.' },
-      { initials: 'YK', name: 'Yusuke Kataoka',     role: 'TA Lead',        bio: 'Senior quant developer. Runs the C++/Python implementation track.' },
+      { initials: 'AL', name: 'Practitioner Mentor', role: 'Lead Instructor', bio: '10+ years on the derivatives desk. PhD in stochastic analysis.' },
+      { initials: 'NB', name: 'Volatility Modeller',  role: 'Co-instructor',  bio: 'Former head of vol modelling at a top-tier market maker.' },
+      { initials: 'YK', name: 'Quant Developer',     role: 'TA Lead',        bio: 'Senior quant developer. Runs the Python implementation track.' },
     ],
     faqs: [
-      { q: 'What background do I need?', a: 'A solid grasp of real analysis, probability and linear algebra. Comfort with Python is expected; C++ is taught as needed. We do not assume prior finance coursework — the financial intuition is built from first principles.' },
-      { q: 'How much time per week should I plan for?', a: 'Roughly 12–16 hours: a 3-hour live session, 2 hours of office hours and the rest for problem sets, code and reading. The track is intense by design.' },
-      { q: 'Is the program remote, in-person or hybrid?', a: 'Hybrid. Live sessions stream and record; cohorts gather in person for two intensive on-sites and the capstone defense.' },
-      { q: 'Do you offer career placement?', a: 'Yes — we maintain active referral relationships with 28 partner firms across systematic trading, market making, sell-side derivatives and quant research roles.' },
-      { q: 'Is there a scholarship or aid?', a: 'CMF reserves 20% of every cohort for need- and merit-based scholarships. Applications open with each intake cycle.' },
+      { q: 'What background do I need?', a: 'A solid grasp of real analysis, probability and linear algebra. Comfort with Python is expected. We do not assume prior finance coursework — the financial intuition is built from first principles.' },
+      { q: 'How much time per week should I plan for?', a: 'Roughly 10–20 hours per week across live sessions, problem sets, code and reading. The track is intense by design.' },
+      { q: 'Is the program remote or in-person?', a: 'Online. Live sessions stream and are recorded; collaboration happens across the international cohort.' },
+      { q: 'Is there a fee?', a: 'No — CMF programs are tuition-free. The only investment we ask for is your time and commitment.' },
+      { q: 'What happens to alumni?', a: 'CMF alumni have joined companies like Google, Goldman Sachs, McKinsey and many others — and many return to mentor on the CMF Team.' },
     ],
   },
+
   ai: {
-    tag: 'AI · TRACK 01',
-    title: 'Applied AI for Finance',
-    subtitle: 'From classical ML to transformers, grounded in markets',
-    intro: 'Machine learning that holds up to market reality: forecasting, classification and generative models applied to tick data, fundamentals and unstructured text — taught alongside the statistical caveats that make or break them.',
+    tag: 'AI SCHOOL · TRACK 01',
+    title: 'AI School @ AI Institute',
+    subtitle: 'AI agents, integration engines and AI-native product design',
+    intro: 'A builder-focused program inspired by the "learn by building" approach. The frontier has moved from model improvements to AI agents, integration engines and intelligent systems that work inside real products and workflows — and that is what we build.',
     meta: [
-      { k: 'Duration', v: '12 weeks' }, { k: 'Format', v: 'Hybrid · Weekly' },
-      { k: 'Cohort', v: '07 · Fall 2026' }, { k: 'Level', v: 'Graduate' },
+      { k: 'Duration', v: 'Until end of July' },
+      { k: 'Format', v: 'Online · Saturdays' },
+      { k: 'Cohort', v: 'Cohort 01 · 2026' },
+      { k: 'Language', v: 'English' },
     ],
     modules: [
-      { num: '01', title: 'ML Foundations for Markets', tag: '2 WEEKS', desc: 'Bias-variance, regularization and the special pathologies of financial data: low SNR, non-stationarity and leakage.' },
-      { num: '02', title: 'Feature Engineering on Tick Data', tag: '1 WEEK', desc: 'Microstructure features, fractional differencing and event-based sampling.' },
-      { num: '03', title: 'Forecasting & Signals', tag: '2 WEEKS', desc: 'Time-series models, gradient boosting and neural sequence models — with combinatorial purged cross-validation.' },
-      { num: '04', title: 'Deep Learning Architectures', tag: '2 WEEKS', desc: 'CNNs, RNNs and attention for sequences; tabular deep nets and their limits.' },
-      { num: '05', title: 'LLMs in Finance', tag: '2 WEEKS', desc: 'Encoders for NLP signals; fine-tuning, retrieval and structured extraction from filings.' },
-      { num: '06', title: 'Reinforcement Learning', tag: '1 WEEK', desc: 'Policy gradients and execution-aware agents on simulated order books.' },
-      { num: '07', title: 'Capstone', tag: '2 WEEKS', desc: 'Ship an ML-driven trading or research artifact, validated on out-of-sample data.' },
+      { num: '01', title: 'Development of Integration Engine', tag: '1 WEEK', desc: 'The plumbing that connects LLMs to real tools and data sources.' },
+      { num: '02', title: 'Content Transformation', tag: '2 WEEKS', desc: 'Turn dry, technical input into short, useful, human-sounding messages — the cohort\'s flagship project.' },
+      { num: '03', title: 'Metrics & Behavioral Framework', tag: '1 WEEK', desc: 'How to evaluate an agent. If it sounds synthetic, it fails — quantify that signal.' },
+      { num: '04', title: 'AI-Native Product Design', tag: '2 WEEKS', desc: 'Designing products that feel native to the AI substrate, not bolted-on chatbots.' },
+      { num: '05', title: 'Prompt Engineering', tag: '1 WEEK', desc: 'System and user prompts that hold up under production stress.' },
+      { num: '06', title: 'AI Product Management & Development', tag: '2 WEEKS', desc: 'The end-to-end lifecycle: scoping, building, evaluating, iterating.' },
+      { num: '07', title: 'Interview Preparation', tag: '1 WEEK', desc: 'Mock interviews, system design and offer negotiation for AI roles.' },
     ],
     outcomes: [
-      'Apply modern ML to real, noisy market data with statistical honesty',
-      'Build, deploy and monitor LLM-driven research pipelines',
-      'Design experiments that survive multiple-testing scrutiny',
-      'Reason about transaction costs and execution in model design',
+      'Ship working AI agents end-to-end with a minimal stack',
+      'Design evaluation systems that catch synthetic output',
+      'Engineer prompts that behave consistently in production',
+      'Combine your work with the AI &amp; Web3 Startup Incubator',
     ],
     audience: [
-      'ML engineers moving into quant research',
-      'Quants adding modern ML to their toolkit',
-      'Researchers building NLP and alternative-data pipelines',
+      'AI engineers moving from research to product',
+      'Product builders adding LLM capability to real workflows',
+      'Founders and CTOs of early-stage AI startups',
+      'Strong technical people who want to ship, not just lecture',
     ],
     instructors: [
-      { initials: 'JP', name: 'Dr. Jin Park', role: 'Lead Instructor', bio: 'Former research lead, systematic equities. PhD in statistics, Stanford.' },
-      { initials: 'IM', name: 'Iris Mendel', role: 'Co-instructor', bio: 'LLM team lead at a top hedge fund.' },
-      { initials: 'DR', name: 'Dario Renzi', role: 'TA Lead', bio: 'Senior ML engineer. Maintains the cohort\'s training infrastructure.' },
+      { initials: 'TB', name: 'Timur Bakibayev, PhD', role: 'Lead Instructor', bio: 'PhD in Computer Science (Heidelberg University). Founder of a stealth EdTech startup.' },
+      { initials: 'AI', name: 'AI Practitioner', role: 'Co-instructor', bio: 'Builder and product lead with shipped AI-native systems.' },
     ],
     faqs: [
-      { q: 'How much ML experience is required?', a: 'Comfort with the basics of supervised learning and Python\'s ML stack. We move quickly into the financial-data specifics.' },
-      { q: 'Do you cover deployment?', a: 'Yes — model serving, monitoring and drift detection are part of the capstone.' },
+      { q: 'What stack will we use?', a: 'Intentionally minimal: Python + one LLM API (Claude / OpenAI / Gemini — your choice) with Jupyter as the execution layer. No infrastructure abstraction; just building and iterating.' },
+      { q: 'What is the entrance exam?', a: 'Build a Content Transformation Agent that turns a dry technical AI update into a short, human-sounding message that makes the reader want to reply "Show me!". You submit architecture, prompts, a real example and a short screencast.' },
+      { q: 'Can I combine this with the Startup Incubator?', a: 'Yes — AI School participants can also take part in the AI &amp; Web3 Startup Incubator and turn their work into a real product.' },
+      { q: 'Will tokens be provided?', a: 'For the strongest submissions, API tokens are provided for the selected LLM providers.' },
     ],
   },
-  web3: {
-    tag: 'WEB3 · TRACK 02',
-    title: 'Blockchain & DeFi',
-    subtitle: 'Protocol mechanics and on-chain liquidity for quants',
-    intro: 'A quant\'s view of decentralized finance: AMM math, MEV, liquidations and the cross-chain plumbing that makes on-chain markets tradeable.',
+
+  options: {
+    tag: 'OPTIONS SCHOOL · TRACK 02',
+    title: 'Options School',
+    subtitle: 'An institutional options framework, applied end-to-end',
+    intro: 'A core research & development cohort built around five interconnected components — a backtester, pricing & curve modeling, a crypto options module, a risk &amp; vega-hedging layer, and an AI agent layer that augments the entire workflow.',
     meta: [
-      { k: 'Duration', v: '10 weeks' }, { k: 'Format', v: 'Hybrid · Weekly' },
-      { k: 'Cohort', v: '07 · Fall 2026' }, { k: 'Level', v: 'Graduate' },
+      { k: 'Duration', v: '12+ weeks' }, { k: 'Format', v: 'Online · Weekly' },
+      { k: 'Cohort', v: 'Cohort 2026' }, { k: 'Language', v: 'English' },
     ],
     modules: [
-      { num: '01', title: 'DeFi Primitives', tag: '1 WEEK', desc: 'Tokens, custody, settlement, oracles — the unfamiliar parts of the stack.' },
-      { num: '02', title: 'AMM Math', tag: '2 WEEKS', desc: 'CFMMs, concentrated liquidity and impermanent loss derived from first principles.' },
-      { num: '03', title: 'On-Chain Strategy', tag: '2 WEEKS', desc: 'Liquidity provision, arbitrage and statistical strategies adapted to the on-chain microstructure.' },
-      { num: '04', title: 'MEV', tag: '2 WEEKS', desc: 'Searcher, builder, validator. PBS, sandwich constraints and competitive dynamics.' },
-      { num: '05', title: 'Capstone', tag: '3 WEEKS', desc: 'Ship a live on-chain strategy or research artifact, evaluated on mainnet data.' },
+      { num: '01', title: 'Options Backtester', tag: '3 WEEKS', desc: 'A robust simulation engine for evaluating strategies under realistic market conditions — portfolio-level analysis, regime sensitivity and transaction-cost-aware validation.' },
+      { num: '02', title: 'Pricing & Curve Modeling', tag: '3 WEEKS', desc: 'Building and calibrating curves, surfaces and valuation models — especially for illiquid instruments where market data is sparse and standard assumptions break down.' },
+      { num: '03', title: 'Crypto Options Module', tag: '2 WEEKS', desc: 'The same institutional framework extended into crypto options — adapted for the specific liquidity, volatility and microstructure characteristics of digital asset markets.' },
+      { num: '04', title: 'Portfolio Risk & Vega Hedging', tag: '2 WEEKS', desc: 'A dedicated risk layer for monitoring and managing volatility exposure — vega hedging, surface dynamics and portfolio-level risk decomposition.' },
+      { num: '05', title: 'AI Agent Layer', tag: '2 WEEKS', desc: 'An intelligent orchestration layer that augments research and trading workflow — idea generation, monitoring, diagnostics and decision support across the platform.' },
     ],
     outcomes: [
-      'Reason quantitatively about AMM and lending protocols',
-      'Build on-chain strategies grounded in microstructure',
-      'Read and reproduce DeFi research papers',
+      'Build and operate an institutional options backtester end-to-end',
+      'Calibrate pricing models for illiquid and exotic instruments',
+      'Extend the framework into crypto options with confidence',
+      'Manage vega and surface-dynamic risk at the portfolio level',
+      'Augment the workflow with custom AI agent orchestration',
     ],
     audience: [
-      'Quants curious about on-chain markets',
-      'Engineers building DeFi research and trading systems',
+      'Options traders and quants seeking a rigorous, integrated framework',
+      'Engineers building pricing, risk or backtesting infrastructure',
+      'Researchers moving from academic finance to the desk',
+      'Crypto-options practitioners formalising their stack',
     ],
     instructors: [
-      { initials: 'VM', name: 'Dr. Vera Marlow', role: 'Lead Instructor', bio: 'Author on AMM design and MEV markets.' },
-      { initials: 'OK', name: 'Omar Khalid', role: 'Co-instructor', bio: 'Founder, on-chain market-making team.' },
+      { initials: 'OL', name: 'Options Practitioner', role: 'Lead Instructor', bio: '10+ years pricing and trading vanilla & exotic options.' },
+      { initials: 'CR', name: 'Crypto-Options Lead', role: 'Co-instructor', bio: 'Builder of crypto options infrastructure across major venues.' },
+      { initials: 'AA', name: 'AI Agent Engineer', role: 'TA Lead', bio: 'Leads the AI orchestration layer across the Options School stack.' },
     ],
     faqs: [
-      { q: 'Do I need to write smart contracts?', a: 'You read them; the strategy code is in Python and Rust.' },
+      { q: 'Do I need prior options experience?', a: 'A working knowledge of derivatives is recommended. The Advanced Quantitative Analytics track is a good prerequisite if you need the theory first.' },
+      { q: 'What artifacts will I ship?', a: 'A working backtester, a calibrated pricer for illiquid instruments, a crypto-options extension, a vega-hedging layer and an AI agent that orchestrates the whole research workflow.' },
+      { q: 'Can I lead a project team?', a: 'Yes — CMF Team participants can apply as Product Owners for small student teams within Options School, HFT School and the Advanced Quantitative Analytics Program.' },
     ],
   },
-  ds: {
-    tag: 'DS · TRACK 04',
-    title: 'Data Science for Markets',
-    subtitle: 'Tick data, alternative data and factor models',
-    intro: 'The data side of systematic trading: clean, model, decompose and stress-test the inputs that drive every modern strategy.',
+
+  hft: {
+    tag: 'HFT SCHOOL · TRACK 03',
+    title: 'HFT School',
+    subtitle: 'High-frequency market making, microstructure and execution',
+    intro: 'A focused research track on high-frequency trading — market microstructure, latency-aware system design, market-making strategy, and the execution research that makes systematic trading work at the millisecond scale.',
     meta: [
-      { k: 'Duration', v: '12 weeks' }, { k: 'Format', v: 'Hybrid · Weekly' },
-      { k: 'Cohort', v: '07 · Fall 2026' }, { k: 'Level', v: 'Graduate' },
+      { k: 'Duration', v: '12 weeks' }, { k: 'Format', v: 'Online · Weekly' },
+      { k: 'Cohort', v: 'Cohort 2026' }, { k: 'Language', v: 'English' },
     ],
     modules: [
-      { num: '01', title: 'Market Data Engineering', tag: '2 WEEKS', desc: 'L1/L2/L3 feeds, tick normalization, corporate actions and survivorship.' },
-      { num: '02', title: 'Factor Models', tag: '2 WEEKS', desc: 'Fama-French, PCA, and modern orthogonalization techniques.' },
-      { num: '03', title: 'Statistical Learning for Alpha', tag: '2 WEEKS', desc: 'Robust regression, dimensionality reduction and signal combination.' },
-      { num: '04', title: 'Backtesting', tag: '2 WEEKS', desc: 'Bias-free simulation, transaction costs and combinatorial purged CV.' },
-      { num: '05', title: 'Capstone', tag: '4 WEEKS', desc: 'Ship a factor research artifact with rigorous out-of-sample evidence.' },
+      { num: '01', title: 'Market Microstructure', tag: '2 WEEKS', desc: 'Limit order books, queue dynamics, adverse selection — the underlying mechanics of every HFT strategy.' },
+      { num: '02', title: 'Market Making Strategy', tag: '2 WEEKS', desc: 'Quoting policies, inventory management and adverse-selection control.' },
+      { num: '03', title: 'Execution Research', tag: '2 WEEKS', desc: 'Order routing, child slicing, transaction-cost analysis and impact modeling.' },
+      { num: '04', title: 'Latency-aware System Design', tag: '2 WEEKS', desc: 'The engineering that turns theoretical edge into realized PnL — kernel bypass, lockless queues, low-latency networking.' },
+      { num: '05', title: 'Machine Learning in HFT', tag: '2 WEEKS', desc: 'Where ML works at high frequency, where it doesn\'t, and how to evaluate it honestly.' },
+      { num: '06', title: 'Capstone', tag: '2 WEEKS', desc: 'A market-making research artifact validated on live exchange data with full TCA.' },
     ],
     outcomes: [
-      'Engineer production-grade research datasets',
-      'Build and validate factor models on equity universes',
-      'Apply modern statistical learning to alpha research',
+      'Reason quantitatively about queue position and adverse selection',
+      'Build market-making strategy with inventory and risk controls',
+      'Design latency-aware systems with realistic engineering trade-offs',
+      'Evaluate execution research with honest, leak-free methodology',
     ],
     audience: [
-      'Data scientists moving into systematic trading',
-      'Quants adding rigor to their backtesting',
+      'Quants moving into high-frequency systematic strategies',
+      'Engineers building exchange-facing trading systems',
+      'Researchers interested in market microstructure',
     ],
     instructors: [
-      { initials: 'HC', name: 'Dr. Helena Cho', role: 'Lead Instructor', bio: 'Former PM, multi-strat fund. PhD in econometrics.' },
-      { initials: 'ML', name: 'Marcus Liu', role: 'Co-instructor', bio: 'Senior data engineer; built the cohort\'s data lake.' },
+      { initials: 'HF', name: 'HFT Practitioner', role: 'Lead Instructor', bio: '10+ years in low-latency market making at a top-tier firm.' },
+      { initials: 'EX', name: 'Execution Researcher', role: 'Co-instructor', bio: 'Specialist in execution research and TCA.' },
     ],
     faqs: [
-      { q: 'Do you provide data?', a: 'Yes — cohorts get access to the CMF research data stack: equity tick data, fundamentals and curated alt-data feeds.' },
+      { q: 'Do I need C++ on day one?', a: 'No — Python is the primary research language. C++ is introduced for latency-critical components when appropriate.' },
+      { q: 'Can CMF Team participants lead an HFT project?', a: 'Yes — Product Owner roles for HFT School project teams are open through the CMF Team application.' },
+    ],
+  },
+
+  fintech: {
+    tag: 'FINTECH SCHOOL',
+    title: 'FinTech Equity Analyst Program',
+    subtitle: 'Investments in fintech, digital assets and AI in finance',
+    intro: 'Designed for acting and aspiring equity analysts who wish to explore investments in fintech, digital assets and AI in finance — combining lectures, expert interviews and home assignments with student project presentations.',
+    meta: [
+      { k: 'Duration', v: 'Until end of June' }, { k: 'Format', v: 'Online · Sundays' },
+      { k: 'Cohort', v: 'Cohort 2026' }, { k: 'Language', v: 'English' },
+    ],
+    modules: [
+      { num: '01', title: 'Financial Institution Business Models', tag: '2 WEEKS', desc: 'Value chains by vertical: payments, credit, capital markets and insurance.' },
+      { num: '02', title: 'Blockchain & Digital Assets', tag: '1 WEEK', desc: 'How tokens, settlement and custody reshape financial primitives.' },
+      { num: '03', title: 'Consumer Sentiment & Product Expectations', tag: '1 WEEK', desc: 'The demand side of fintech — surveys, behavioural signals and product fit.' },
+      { num: '04', title: 'Fintech Investable Universe', tag: '2 WEEKS', desc: 'PE and VC holdings, ETF composition, public-company valuation and M&amp;A dynamics.' },
+      { num: '05', title: 'Data and AI in Finance', tag: '2 WEEKS', desc: 'Markets for financial data and where AI applications create real value in the industry.' },
+      { num: '06', title: 'Policy & Regulation', tag: '1 WEEK', desc: 'Implications for policy, regulation and the durability of fintech business models.' },
+    ],
+    outcomes: [
+      'Value a fintech company from its annual report end-to-end',
+      'Build a thesis-driven fintech portfolio across verticals',
+      'Identify AI applications most likely to reshape finance',
+      'Communicate fintech investment ideas to investment committees',
+    ],
+    audience: [
+      'Acting and aspiring equity analysts',
+      'Investors wanting deeper fintech and digital-asset coverage',
+      'Strategy and corporate-development professionals',
+    ],
+    instructors: [
+      { initials: 'FT', name: 'FinTech Lead', role: 'Lead Instructor', bio: 'Career equity research across fintech and digital assets.' },
+    ],
+    faqs: [
+      { q: 'What is the admission essay?', a: '"Your Fintech Investment Targets" — three companies you would invest in, your reasoning, what allocations to avoid, and the fintech investor you admire most. 400–500 words, no LLM-generated submissions accepted.' },
+      { q: 'How many hours per week?', a: '10–20 hours per week of lectures, self-study and project work.' },
     ],
   },
 };
@@ -186,7 +241,7 @@ function ProgramDetail({ id }) {
               <p className="lede" style={{ marginBottom: 32 }}>{p.intro}</p>
               <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
                 <a href="#/apply" className="btn btn-gold">Apply now <IconArrow /></a>
-                <a href="#syllabus" className="btn btn-outline">Download syllabus</a>
+                <a href="#syllabus" className="btn btn-outline">View syllabus</a>
               </div>
             </div>
             <div>
@@ -212,7 +267,7 @@ function ProgramDetail({ id }) {
               <h2 className="h-display h2">What you'll learn,<br/>module by module.</h2>
             </div>
             <p className="lede">Every module ships with problem sets, a coding sprint
-              and a short written reflection. The capstone runs through the entire track.</p>
+              and a short written reflection. A capstone runs through the entire track.</p>
           </div>
           <div className="curriculum">
             {p.modules.map(m => (
@@ -260,7 +315,7 @@ function ProgramDetail({ id }) {
               <h2 className="h-display h2">Taught by<br/>practitioners.</h2>
             </div>
             <p className="lede">CMF instructors split their time between the program
-              and active research, trading or engineering roles.</p>
+              and active research, trading or engineering roles — many with 10+ years of experience.</p>
           </div>
           <div className="team-grid">
             {p.instructors.map(i => (
@@ -303,8 +358,8 @@ function ProgramDetail({ id }) {
       {/* CTA tail */}
       <section className="section-tight">
         <div className="container" style={{ textAlign: 'center', padding: '60px 0' }}>
-          <p className="eyebrow" style={{ display: 'block', marginBottom: 18 }}>Applications close August 30</p>
-          <h2 className="h-display h2" style={{ marginBottom: 30 }}>Build the foundation.<br/>Join cohort 07.</h2>
+          <p className="eyebrow" style={{ display: 'block', marginBottom: 18 }}>Tuition-free · International cohort</p>
+          <h2 className="h-display h2" style={{ marginBottom: 30 }}>Ready to build?<br/>Apply to {p.title}.</h2>
           <div style={{ display: 'inline-flex', gap: 14 }}>
             <a href="#/apply" className="btn btn-gold">Apply now <IconArrow /></a>
             <a href="#/programs" className="btn btn-outline">All programs</a>

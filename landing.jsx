@@ -3,60 +3,60 @@ const PROGRAMS = [
   {
     id: 'ai',
     num: '01',
-    tag: 'AI',
-    title: 'Applied AI for Finance',
-    desc: 'From classical ML to transformers — building signal pipelines, forecasting models and execution agents grounded in market reality.',
-    courses: ['Course 1 · Foundations of ML in Markets', 'Course 2 · Deep Learning & LLMs for Quant'],
+    tag: 'AI SCHOOL',
+    title: 'AI School @ AI Institute',
+    desc: 'Build AI agents, integration engines and AI-native products. Python + one LLM API + Jupyter — signal over infrastructure.',
+    courses: ['Course 1 · AI Agents & Integration Engines', 'Course 2 · Content Transformation & Product Design'],
     Icon: () => <IconAI />,
   },
   {
-    id: 'web3',
+    id: 'options',
     num: '02',
-    tag: 'WEB3',
-    title: 'Blockchain & DeFi',
-    desc: 'Protocol mechanics, AMMs, MEV and on-chain liquidity — a quant\'s view of decentralized finance and tokenized markets.',
-    courses: ['Course 1 · DeFi Primitives & AMM Math', 'Course 2 · On-chain Strategy & MEV'],
-    Icon: () => <IconWeb3 />,
+    tag: 'OPTIONS SCHOOL',
+    title: 'Options School',
+    desc: 'A backtester, pricing & curve modeling, crypto options and vega hedging — an institutional options framework, applied end-to-end.',
+    courses: ['Course 1 · Backtester, Pricing & Curve Modeling', 'Course 2 · Crypto Options & Vega Hedging'],
+    Icon: () => <IconOptions />,
+  },
+  {
+    id: 'hft',
+    num: '03',
+    tag: 'HFT SCHOOL',
+    title: 'HFT School',
+    desc: 'High-frequency market making and execution research — microstructure, latency-aware design and live-market validation.',
+    courses: ['Course 1 · Market Microstructure & Strategy Design', 'Course 2 · Execution Engineering & Validation'],
+    Icon: () => <IconHFT />,
   },
   {
     id: 'quant',
-    num: '03',
-    tag: 'QUANT',
-    title: 'Quantitative Finance & Derivatives',
-    desc: 'From binomial trees to Monte Carlo — pricing, hedging, and the stochastic calculus that underpins modern derivatives.',
-    courses: ['Course 1 · Financial Mathematics & Derivatives Pricing', 'Course 2 · Stochastic Calculus in Practice'],
-    Icon: () => <IconQuant />,
-  },
-  {
-    id: 'ds',
     num: '04',
-    tag: 'DS',
-    title: 'Data Science for Markets',
-    desc: 'Tick data, alternative data, factor models and statistical inference for systematic trading research.',
-    courses: ['Course 1 · Market Data Engineering', 'Course 2 · Statistical Learning for Alpha'],
-    Icon: () => <IconDS />,
+    tag: 'ADV. QUANT ANALYTICS',
+    title: 'Advanced Quantitative Analytics',
+    desc: 'From binomial trees to Monte Carlo. Derivatives pricing, stochastic calculus and applied quantitative research.',
+    courses: ['Course 1 · Derivatives Pricing & Stochastic Calculus', 'Course 2 · Applied Quantitative Research'],
+    Icon: () => <IconQuant />,
   },
 ];
 
 const PROJECTS = [
-  { id: 'vol-surface',    title: 'Volatility Surface Construction', cohort: 'COHORT 06 · QUANT',
-    desc: 'Calibrating SVI and SSVI surfaces on SPX options with arbitrage-free interpolation across strikes and tenors.',
-    tags: ['Quant', 'Derivatives'], variant: 'surface', tint: 'gold' },
-  { id: 'alpha-signals',  title: 'Mid-Frequency Alpha Signals',    cohort: 'COHORT 06 · DS',
-    desc: 'Engineering 40+ orthogonalized factors on US equities, evaluated with Sharpe-corrected combinatorial purged CV.',
-    tags: ['DS', 'Equities'], variant: 'curve', tint: 'gold' },
-  { id: 'onchain-mm',     title: 'On-Chain Market Making',         cohort: 'COHORT 05 · WEB3',
-    desc: 'Liquidity provision strategy on a concentrated-liquidity AMM with inventory-aware impermanent-loss hedging.',
-    tags: ['Web3', 'DeFi'], variant: 'orderbook', tint: 'gold' },
-  { id: 'sentiment-llm',  title: 'LLM-Driven Sentiment Indices',   cohort: 'COHORT 06 · AI',
-    desc: 'Fine-tuned encoders on earnings transcripts; sector-level sentiment signal beats baseline by 32 bps annualized.',
-    tags: ['AI', 'NLP'], variant: 'heatmap', tint: 'gold' },
-  { id: 'rates-curve',    title: 'Rates Curve & Carry',            cohort: 'COHORT 05 · QUANT',
-    desc: 'Multi-curve bootstrapping and carry/roll decomposition for USD swap and treasury markets.',
-    tags: ['Quant', 'Rates'], variant: 'bars', tint: 'gold' },
-  { id: 'graph-risk',     title: 'Graph-Based Portfolio Risk',     cohort: 'COHORT 06 · DS',
-    desc: 'Modeling cross-asset contagion with sector graphs; spectral clustering for adaptive risk decomposition.',
-    tags: ['DS', 'Risk'], variant: 'network', tint: 'gold' },
+  { id: 'options-backtester', title: 'Options Backtester', cohort: 'OPTIONS SCHOOL',
+    desc: 'A robust simulation engine for evaluating options strategies under realistic market conditions — portfolio-level analysis, regime sensitivity and transaction-cost-aware validation.',
+    tags: ['Options', 'Backtesting'], variant: 'bars', tint: 'gold' },
+  { id: 'pricing-curve', title: 'Pricing & Curve Modeling', cohort: 'OPTIONS SCHOOL',
+    desc: 'Building and calibrating curves, surfaces and valuation models — focused on illiquid instruments where market data is sparse and standard assumptions break down.',
+    tags: ['Options', 'Pricing'], variant: 'surface', tint: 'gold' },
+  { id: 'crypto-options', title: 'Crypto Options Module', cohort: 'OPTIONS SCHOOL',
+    desc: 'An extension of the institutional framework into crypto options — adapted for the liquidity, volatility and microstructure of digital asset markets.',
+    tags: ['Options', 'Crypto'], variant: 'orderbook', tint: 'gold' },
+  { id: 'vega-hedging', title: 'Portfolio Risk & Vega Hedging', cohort: 'OPTIONS SCHOOL',
+    desc: 'A dedicated risk layer for monitoring and managing volatility exposure across the book — vega hedging, surface dynamics and portfolio-level risk decomposition.',
+    tags: ['Options', 'Risk'], variant: 'heatmap', tint: 'gold' },
+  { id: 'ai-agent-layer', title: 'AI Agent Layer', cohort: 'AI SCHOOL · OPTIONS',
+    desc: 'An intelligent orchestration layer that augments the research and trading workflow — supporting idea generation, monitoring, diagnostics and decision support.',
+    tags: ['AI', 'Agents'], variant: 'network', tint: 'gold' },
+  { id: 'hft-market-making', title: 'HFT Market Making', cohort: 'HFT SCHOOL',
+    desc: 'Latency-aware market making research with inventory-management and adverse-selection controls — validated on live exchange feeds.',
+    tags: ['HFT', 'Microstructure'], variant: 'curve', tint: 'gold' },
 ];
 
 function Landing() {
@@ -68,13 +68,14 @@ function Landing() {
         <div className="container">
           <div className="hero-grid">
             <div className="hero-content">
-              <span className="eyebrow">EST. 2019 · INTAKE 2026</span>
+              <span className="eyebrow">IMPACT-DRIVEN · INTERNATIONAL · TUITION-FREE</span>
               <h1 className="h-display h1 hero-headline">Center of<br/>Mathematical<br/>Finance</h1>
-              <p className="subhead hero-sub">Bridging rigorous theory and real-world quantitative practice</p>
+              <p className="subhead hero-sub">From financial intuition to rigorous quantitative modeling</p>
               <p className="lede hero-para">
-                CMF trains mathematicians, computer scientists and physicists to build the
-                pricing models, signal engines and trading systems behind modern markets —
-                grounded in measure-theoretic rigor and shipped on production data.
+                CMF is an impact-driven international educational initiative for people with
+                high ethical values and strong technical skills. Across our schools in Quantitative
+                Finance, HFT, Options, AI, FinTech and Web3, we support talented individuals — especially
+                from developing countries — to start meaningful careers and contribute to real-world research.
               </p>
               <div className="hero-ctas">
                 <a href="#/programs" className="btn btn-gold">Explore Programs <IconArrow /></a>
@@ -107,29 +108,30 @@ function Landing() {
           <div className="section-head">
             <div className="left">
               <span className="eyebrow">/ 01 — Our approach</span>
-              <h2 className="h-display h2">Three principles<br/>guide every cohort.</h2>
+              <h2 className="h-display h2">Ethics, skill and<br/>real-world impact.</h2>
             </div>
-            <p className="lede">A graduate-level program built by practicing quants. We
-              teach the math we use, the code we ship, and the intuition that holds them together.</p>
+            <p className="lede">A community where practitioners with 10+ years of experience build
+              and execute real projects alongside exceptionally strong students. The only investment we
+              ask for is your time and commitment.</p>
           </div>
           <div className="values">
             <div className="value">
               <div className="value-icon"><IconRigor /></div>
               <h4>Rigorous</h4>
-              <p>Measure theory, stochastic calculus, numerical methods — taught with the
-                depth required to read papers and prove things, not just recite them.</p>
+              <p>From financial intuition to rigorous quantitative modeling — stochastic calculus,
+                numerical methods and the depth required to read papers, not just recite them.</p>
             </div>
             <div className="value">
               <div className="value-icon"><IconPractice /></div>
-              <h4>Practical</h4>
-              <p>Every model lands in code on production-grade data: tick feeds, swap curves,
-                option chains and on-chain liquidity — never toy datasets.</p>
+              <h4>Builder-first</h4>
+              <p>We learn by building. Backtesters, pricing engines, AI agents and live trading
+                systems — every program ships real artifacts on real data.</p>
             </div>
             <div className="value">
               <div className="value-icon"><IconIntuition /></div>
-              <h4>Intuitive</h4>
-              <p>We build the financial intuition behind the math: why a Greek behaves the
-                way it does, why a curve steepens, why a strategy decays.</p>
+              <h4>Impact-driven</h4>
+              <p>Tuition-free programs for talented people across the world — especially from
+                developing countries — unlocking meaningful careers in democratic societies.</p>
             </div>
           </div>
         </div>
@@ -140,11 +142,12 @@ function Landing() {
         <div className="container">
           <div className="section-head">
             <div className="left">
-              <span className="eyebrow">/ 02 — Curricula</span>
+              <span className="eyebrow">/ 02 — Schools</span>
               <h2 className="h-display h2">Programs open<br/>for registration.</h2>
             </div>
-            <p className="lede">Four parallel tracks, each two courses deep. Take one,
-              stack several, or design a custom path with admissions.</p>
+            <p className="lede">Four flagship schools, each delivered as two intensive courses.
+              FinTech, Equity Research and the AI &amp; Web3 Startup Incubator open separately —
+              see all programs for the full list.</p>
           </div>
           <div className="programs-grid">
             {PROGRAMS.map(p => (
@@ -166,6 +169,9 @@ function Landing() {
               </a>
             ))}
           </div>
+          <div style={{ marginTop: 28, textAlign: 'center' }}>
+            <a href="#/programs" className="btn btn-outline">View all schools <IconArrow /></a>
+          </div>
         </div>
       </section>
 
@@ -177,8 +183,9 @@ function Landing() {
               <span className="eyebrow">/ 03 — Portfolio</span>
               <h2 className="h-display h2">Projects by our<br/>team and cohorts.</h2>
             </div>
-            <p className="lede">Capstone work and ongoing research from CMF cohorts.
-              Every project ships with a paper, a notebook and a production-shaped repository.</p>
+            <p className="lede">Capstone work and ongoing research across CMF schools. Every project
+              ships with documentation, code and a written defense — built collaboratively by
+              students and practitioner mentors.</p>
           </div>
           <div className="portfolio-grid">
             {PROJECTS.map(p => (
@@ -205,19 +212,19 @@ function Landing() {
           <div className="stats">
             <div className="stat">
               <div className="stat-num"><span className="g">07</span></div>
-              <div className="stat-label">Cohorts completed</div>
+              <div className="stat-label">Schools & programs</div>
             </div>
             <div className="stat">
-              <div className="stat-num">142</div>
-              <div className="stat-label">Projects shipped</div>
+              <div className="stat-num">10+ yrs</div>
+              <div className="stat-label">Avg. mentor experience</div>
             </div>
             <div className="stat">
-              <div className="stat-num">386</div>
-              <div className="stat-label">Alumni placed</div>
+              <div className="stat-num">Google · GS</div>
+              <div className="stat-label">Where alumni land</div>
             </div>
             <div className="stat">
-              <div className="stat-num"><span className="g">28</span></div>
-              <div className="stat-label">Partner firms</div>
+              <div className="stat-num"><span className="g">100%</span></div>
+              <div className="stat-label">Tuition-free</div>
             </div>
           </div>
         </div>
@@ -234,41 +241,39 @@ function Landing() {
           </div>
           <div className="testimonials">
             <div className="testimonial">
-              <p>"CMF rebuilt the way I read papers. Six months in I was pricing
-                exotic barriers on the desk — and actually understanding what the
-                Greeks were telling me."</p>
+              <p>"It is rare to find a team where practitioners with 10+ years of experience work
+                together to build real-world projects within an educational initiative — alongside
+                exceptionally strong students."</p>
               <div className="testimonial-author">
                 <div className="testimonial-avatar">EK</div>
-                <div className="testimonial-meta"><b>Elena Kovač</b><span>Quant · Cohort 04</span></div>
+                <div className="testimonial-meta"><b>Elena Kovač</b><span>Options School · Mentor</span></div>
               </div>
             </div>
             <div className="testimonial">
-              <p>"The most rigorous applied program I've seen. The graduates we
-                hire from CMF arrive ready to contribute to production systems
-                in their first month."</p>
+              <p>"CMF rebuilt the way I read papers. Six months in I was pricing exotic barriers
+                on the desk — and actually understanding what the Greeks were telling me."</p>
               <div className="testimonial-author">
                 <div className="testimonial-avatar">RT</div>
-                <div className="testimonial-meta"><b>Ravi Thakkar</b><span>Head of Research · Partner Firm</span></div>
+                <div className="testimonial-meta"><b>Ravi Thakkar</b><span>Adv. Quant Analytics · Alumnus</span></div>
               </div>
             </div>
             <div className="testimonial">
-              <p>"The intuition track is the secret weapon. Anyone can grind
-                through Shreve — CMF makes you feel why a martingale is the
-                right tool for the job."</p>
+              <p>"Lean stack. Sharp problems. We built AI agents that actually shipped — and the
+                evaluation criteria forced honesty about what was real and what was AI slop."</p>
               <div className="testimonial-author">
                 <div className="testimonial-avatar">MS</div>
-                <div className="testimonial-meta"><b>Maya Soriano</b><span>Researcher · Cohort 05</span></div>
+                <div className="testimonial-meta"><b>Maya Soriano</b><span>AI School · Cohort 01</span></div>
               </div>
             </div>
           </div>
 
           <div className="partners">
-            <div className="partner">NORTHFIELD</div>
-            <div className="partner">AXIOM CAP</div>
-            <div className="partner">VEGA LABS</div>
-            <div className="partner">DELTA ONE</div>
-            <div className="partner">PRIMEROOT</div>
-            <div className="partner">QUADRA</div>
+            <div className="partner">GOOGLE</div>
+            <div className="partner">GOLDMAN SACHS</div>
+            <div className="partner">MCKINSEY</div>
+            <div className="partner">YNVRSTY</div>
+            <div className="partner">AI INSTITUTE</div>
+            <div className="partner">FINTECH SCHOOL</div>
           </div>
         </div>
       </section>
