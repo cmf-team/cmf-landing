@@ -279,6 +279,49 @@ body::after {
   overflow: hidden;
 }
 
+/* Smooth GPU-driven motion for the wireframe surface — no React re-renders */
+@keyframes surfaceBreathe {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50%      { transform: scale(1.012) translateY(-4px); }
+}
+@keyframes surfaceHaloPulse {
+  0%, 100% { opacity: 0.85; }
+  50%      { opacity: 1; }
+}
+@keyframes surfacePeakPulse {
+  0%, 100% { opacity: 0.55; r: 14; }
+  50%      { opacity: 0.95; r: 22; }
+}
+@keyframes surfaceDrift {
+  0%   { transform: rotate(-0.5deg); }
+  50%  { transform: rotate(0.5deg); }
+  100% { transform: rotate(-0.5deg); }
+}
+.surface-svg {
+  animation: surfaceBreathe 9s ease-in-out infinite;
+  will-change: transform;
+}
+.surface-rotor {
+  animation: surfaceDrift 24s ease-in-out infinite;
+  transform-box: fill-box;
+  will-change: transform;
+}
+.surface-halo,
+.surface-peak-halo {
+  animation: surfaceHaloPulse 7s ease-in-out infinite;
+  transform-origin: center;
+  will-change: opacity;
+}
+.surface-peak-halo { animation-duration: 5s; }
+.surface-peak-ring {
+  animation: surfacePeakPulse 4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .surface-svg, .surface-rotor, .surface-halo, .surface-peak-halo, .surface-peak-ring {
+    animation: none !important;
+  }
+}
+
 /* Hero stats / formula chips */
 .formula-chip {
   position: absolute;
