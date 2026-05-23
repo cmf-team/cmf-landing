@@ -90,10 +90,10 @@ function Footer() {
               <img src="assets/cmf-logo-white.png" alt="CMF" className="brand-mark" />
               <div className="brand-text">
                 <b>CMF</b>
-                <span>Educational Program</span>
+                <span>Center of Mathematical Finance</span>
               </div>
             </a>
-            <p>The Center of Mathematical Finance prepares the next generation of quantitative researchers, engineers and traders through rigorous, project-driven curricula.</p>
+            <p>An impact-driven international educational initiative for people with high ethical values and strong technical skills. Tuition-free programs supporting talented individuals, especially from developing countries.</p>
             <div className="footer-social">
               <a href="#" aria-label="LinkedIn"><IconLinkedIn /></a>
               <a href="#" aria-label="GitHub"><IconGitHub /></a>
@@ -102,45 +102,46 @@ function Footer() {
             </div>
           </div>
           <div className="footer-col">
-            <h5>Programs</h5>
+            <h5>Schools</h5>
             <ul>
-              <li><a href="#/program/quant">Quantitative Finance</a></li>
-              <li><a href="#/program/ai">Applied AI for Finance</a></li>
-              <li><a href="#/program/web3">Blockchain & DeFi</a></li>
-              <li><a href="#/program/ds">Data Science for Markets</a></li>
+              <li><a href="#/program/ai">AI School</a></li>
+              <li><a href="#/program/options">Options School</a></li>
+              <li><a href="#/program/hft">HFT School</a></li>
+              <li><a href="#/program/quant">Adv. Quant Analytics</a></li>
+              <li><a href="#/program/fintech">FinTech School</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h5>Portfolio</h5>
             <ul>
-              <li><a href="#/project/vol-surface">Volatility Surface</a></li>
-              <li><a href="#/project/alpha-signals">Alpha Signals</a></li>
-              <li><a href="#/project/onchain-mm">On-Chain MM</a></li>
+              <li><a href="#/project/options-backtester">Options Backtester</a></li>
+              <li><a href="#/project/pricing-curve">Pricing & Curves</a></li>
+              <li><a href="#/project/ai-agent-layer">AI Agent Layer</a></li>
               <li><a href="#/portfolio">All projects</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h5>About</h5>
             <ul>
-              <li><a href="#/about">Our story</a></li>
-              <li><a href="#/about">Faculty</a></li>
-              <li><a href="#/about">Cohorts</a></li>
-              <li><a href="#/about">Press</a></li>
+              <li><a href="#/about">Our mission</a></li>
+              <li><a href="#/about">CMF Team</a></li>
+              <li><a href="#/about">Alumni</a></li>
+              <li><a href="#/about">YNVRSTY</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h5>Contact</h5>
             <ul>
               <li><a href="mailto:admissions@cmf.edu">admissions@cmf.edu</a></li>
+              <li><a href="#/contact">Join CMF Team</a></li>
               <li><a href="#/contact">Partnerships</a></li>
-              <li><a href="#/contact">Careers</a></li>
-              <li><a href="#/contact">Visit</a></li>
+              <li><a href="#/contact">Press</a></li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 Center of Mathematical Finance. All rights reserved.</span>
-          <span>v 2026.1 · Cohort 07</span>
+          <span>© 2026 Center of Mathematical Finance. Impact-driven · International · Tuition-free.</span>
+          <span>v 2026.1 · Cohort active</span>
         </div>
       </div>
     </footer>
@@ -441,6 +442,10 @@ const IconAI = () => <Icon><rect x="6" y="6" width="12" height="12" rx="1" /><pa
 const IconWeb3 = () => <Icon><path d="M12 3 L20 8 L20 16 L12 21 L4 16 L4 8 Z" /><path d="M12 3 L12 21 M4 8 L20 16 M4 16 L20 8" /></Icon>;
 const IconQuant = () => <Icon><path d="M4 18 L4 4 M4 18 L20 18" /><path d="M4 14 C8 14, 8 6, 12 6 C16 6, 16 14, 20 14" /><circle cx="12" cy="6" r="1.2" fill="currentColor"/></Icon>;
 const IconDS = () => <Icon><ellipse cx="12" cy="6" rx="8" ry="2.5" /><path d="M4 6 V12 C4 13.5, 7.6 14.5, 12 14.5 S20 13.5, 20 12 V6" /><path d="M4 12 V18 C4 19.5, 7.6 20.5, 12 20.5 S20 19.5, 20 18 V12" /></Icon>;
+const IconOptions = () => <Icon><path d="M3 17 L8 12 L11 14 L16 8 L21 11" /><path d="M21 7 V11 H17" /><path d="M3 21 H21" /></Icon>;
+const IconHFT = () => <Icon><path d="M4 14 L8 14 L10 8 L14 18 L16 12 L20 12" /><circle cx="20" cy="6" r="2" /><path d="M14 6 L18 6" /></Icon>;
+const IconFinTech = () => <Icon><rect x="3" y="6" width="18" height="12" rx="1" /><circle cx="12" cy="12" r="2.5" /><path d="M6 9 H7 M17 15 H18" /><path d="M3 10 H21 M3 14 H21" strokeOpacity="0.4" /></Icon>;
+const IconIncubator = () => <Icon><path d="M12 3 C8 6, 8 11, 12 13 C16 11, 16 6, 12 3 Z" /><path d="M12 13 V21" /><path d="M8 17 L12 21 L16 17" /></Icon>;
 
 const IconArrow = () => <Icon size={14}><path d="M5 12 H19 M13 6 L19 12 L13 18" /></Icon>;
 
@@ -455,5 +460,6 @@ Object.assign(window, {
   Nav, Footer, WireframeSurface, FormulasBg, ChartThumb,
   IconRigor, IconPractice, IconIntuition,
   IconAI, IconWeb3, IconQuant, IconDS, IconArrow,
+  IconOptions, IconHFT, IconFinTech, IconIncubator,
   IconLinkedIn, IconGitHub, IconX, IconYouTube,
 });

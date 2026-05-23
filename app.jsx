@@ -53,7 +53,7 @@ function ProgramsIndex() {
 
 function PortfolioIndex() {
   const [filter, setFilter] = useState('All');
-  const tags = ['All', 'Quant', 'AI', 'Web3', 'DS'];
+  const tags = ['All', 'Options', 'AI', 'HFT', 'Risk'];
   const filtered = filter === 'All' ? PROJECTS : PROJECTS.filter(p => p.tags.includes(filter));
   return (
     <>
@@ -108,10 +108,13 @@ function About() {
         <FormulasBg density="med" />
         <div className="container">
           <a href="#/" className="back-link"><span style={{ display: 'inline-block', transform: 'rotate(180deg)' }}><IconArrow /></span> Back home</a>
-          <span className="eyebrow">/ About</span>
-          <h1 className="h-display h1" style={{ margin: '18px 0 24px' }}>The center.</h1>
+          <span className="eyebrow">/ About CMF</span>
+          <h1 className="h-display h1" style={{ margin: '18px 0 24px' }}>Our mission.</h1>
           <p className="lede" style={{ fontSize: 18, maxWidth: '64ch' }}>
-            CMF was founded in 2019 by a group of practicing quants and academic mathematicians who wanted a single program rigorous enough to read papers and practical enough to ship code.
+            CMF is an impact-driven international educational initiative for people with high
+            ethical values and strong technical skills. Our mission is to support talented
+            individuals — especially from developing countries — to unlock their potential,
+            start meaningful careers and contribute to research and innovation in democratic societies.
           </p>
         </div>
       </section>
@@ -119,17 +122,47 @@ function About() {
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'flex-start' }}>
             <div>
-              <span className="eyebrow" style={{ display: 'block', marginBottom: 16 }}>/ Mission</span>
-              <h3 className="h-display h2" style={{ marginBottom: 24 }}>Build the foundation<br/>for future quants.</h3>
-              <p className="lede">We teach the math we use on the desk, the code we ship in production, and the intuition that holds the two together. Seven cohorts in, the program is taught entirely by practitioners and revised every cycle.</p>
+              <span className="eyebrow" style={{ display: 'block', marginBottom: 16 }}>/ The CMF Team</span>
+              <h3 className="h-display h2" style={{ marginBottom: 24 }}>Practitioners and<br/>strong students.</h3>
+              <p className="lede" style={{ marginBottom: 20 }}>It is rare to find a team where practitioners — many with 10+ years of experience — work together to build and execute real-world projects within an educational initiative alongside exceptionally strong students.</p>
+              <p className="lede">Open roles include Product Owners on real quant, AI and Web3 projects; lecturers and TAs; mentors and founders building startups in our Business Incubator; managers across our online university (YNVRSTY) and EdTech labs.</p>
             </div>
             <ul className="check-list">
-              <li><b>Founded 2019</b> — by practicing quants and academic mathematicians.</li>
-              <li><b>Seven cohorts</b> completed across four tracks.</li>
-              <li><b>28 partner firms</b> in systematic trading, market-making and research.</li>
-              <li><b>20% scholarship</b> reserved on every intake.</li>
-              <li><b>Open research</b> — every capstone ships paper + code.</li>
+              <li><b>Tuition-free</b> — the only investment we ask for is your time and commitment.</li>
+              <li><b>~20 hrs/month</b> for CMF Team participants on mission-driven projects.</li>
+              <li><b>Schools</b> in Quantitative Finance, HFT, Options, AI, Data Science, FinTech, Equity Research and Web3.</li>
+              <li><b>Upcoming</b> schools in Mid-Frequency Strategies, Global Macro and Superforecasting.</li>
+              <li><b>Alumni</b> have joined Google, Goldman Sachs, McKinsey and many others.</li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ background: 'rgba(14,27,54,0.4)' }}>
+        <div className="container">
+          <div className="section-head">
+            <div className="left">
+              <span className="eyebrow">/ Ways to participate</span>
+              <h2 className="h-display h2">Join as a student.<br/>Or join the team.</h2>
+            </div>
+            <p className="lede">We are always excited to meet ethical and technically strong people who want to participate in CMF.</p>
+          </div>
+          <div className="values">
+            <div className="value">
+              <div className="value-icon"><IconAI /></div>
+              <h4>Student</h4>
+              <p>Apply to a school — AI, Options, HFT, Quant, FinTech or the Startup Incubator. Build real projects with practitioner mentors.</p>
+            </div>
+            <div className="value">
+              <div className="value-icon"><IconQuant /></div>
+              <h4>Product Owner</h4>
+              <p>Lead a small student team on a real project within Options School, HFT School or the Advanced Quantitative Analytics Program.</p>
+            </div>
+            <div className="value">
+              <div className="value-icon"><IconIncubator /></div>
+              <h4>Lecturer / Mentor</h4>
+              <p>Design and deliver courses, workshops or interview-prep sessions. Share expertise and deepen your own understanding.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -220,12 +253,14 @@ const fieldStyle = {
 
 function Apply() {
   const [step, setStep] = useState(0);
-  const [data, setData] = useState({ track: 'quant', name: '', email: '', bg: '', motivation: '' });
+  const [data, setData] = useState({ track: 'options', name: '', email: '', bg: '', motivation: '' });
   const tracks = [
-    { id: 'quant', label: 'Quantitative Finance', Icon: IconQuant },
-    { id: 'ai', label: 'Applied AI for Finance', Icon: IconAI },
-    { id: 'web3', label: 'Blockchain & DeFi', Icon: IconWeb3 },
-    { id: 'ds', label: 'Data Science for Markets', Icon: IconDS },
+    { id: 'ai', label: 'AI School', Icon: IconAI },
+    { id: 'options', label: 'Options School', Icon: IconOptions },
+    { id: 'hft', label: 'HFT School', Icon: IconHFT },
+    { id: 'quant', label: 'Adv. Quant Analytics', Icon: IconQuant },
+    { id: 'fintech', label: 'FinTech School', Icon: IconFinTech },
+    { id: 'team', label: 'Join the CMF Team', Icon: IconIncubator },
   ];
 
   return (
