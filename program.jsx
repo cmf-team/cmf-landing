@@ -233,7 +233,7 @@ function ProgramDetail({ id }) {
         <FormulasBg density="med" />
         <div className="container">
           <a href="#/programs" className="back-link"><span style={{ display: 'inline-block', transform: 'rotate(180deg)' }}><IconArrow /></span> Back to programs</a>
-          <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 60, alignItems: 'flex-end' }}>
+          <div className="split-hero">
             <div>
               <span className="program-tag" style={{ marginBottom: 24, display: 'inline-block' }}>{p.tag}</span>
               <h1 className="h-display h1" style={{ marginBottom: 22 }}>{p.title}</h1>
@@ -245,9 +245,9 @@ function ProgramDetail({ id }) {
               </div>
             </div>
             <div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, background: 'var(--border)', border: '1px solid var(--border)' }}>
+              <div className="meta-grid">
                 {p.meta.map(m => (
-                  <div key={m.k} style={{ padding: '20px 22px', background: 'rgba(14,27,54,0.7)' }}>
+                  <div key={m.k} className="meta-cell">
                     <div className="mono" style={{ fontSize: 11, color: 'var(--text-mute)', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 8 }}>{m.k}</div>
                     <div style={{ fontFamily: 'var(--font-display)', fontSize: 20, fontWeight: 600 }}>{m.v}</div>
                   </div>
@@ -287,7 +287,7 @@ function ProgramDetail({ id }) {
       {/* Outcomes / Audience */}
       <section className="section" style={{ background: 'rgba(14,27,54,0.4)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80 }}>
+          <div className="two-col">
             <div>
               <span className="eyebrow" style={{ display: 'block', marginBottom: 16 }}>/ 02 — Outcomes</span>
               <h3 className="h-display h2" style={{ marginBottom: 28 }}>What you'll<br/>walk away with.</h3>

@@ -215,7 +215,7 @@ function ProjectDetail({ id }) {
         <FormulasBg density="low" />
         <div className="container">
           <a href="#/portfolio" className="back-link"><span style={{ display: 'inline-block', transform: 'rotate(180deg)' }}><IconArrow /></span> Back to portfolio</a>
-          <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 60, alignItems: 'flex-end' }}>
+          <div className="split-hero">
             <div>
               <div style={{ display: 'flex', gap: 6, marginBottom: 22, flexWrap: 'wrap' }}>
                 {p.tags.map(t => <span key={t} className="tag">{t}</span>)}
@@ -224,7 +224,7 @@ function ProjectDetail({ id }) {
               <h1 className="h-display h1" style={{ marginBottom: 28, textTransform: 'none', letterSpacing: '-0.02em' }}>{p.title}</h1>
               <p className="lede" style={{ fontSize: 18 }}>{p.summary}</p>
             </div>
-            <div style={{ borderLeft: '1px solid var(--border)', paddingLeft: 32 }}>
+            <div className="proj-meta-side">
               <div className="mono" style={{ fontSize: 11, color: 'var(--text-mute)', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 14 }}>Project meta</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 <div><div className="mono" style={{ fontSize: 11, color: 'var(--text-mute)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>Duration</div><div style={{ fontFamily: 'var(--font-display)', fontSize: 16, fontWeight: 600, marginTop: 4 }}>{p.duration}</div></div>
@@ -315,7 +315,7 @@ function ProjectDetail({ id }) {
             <div>
               <h3>Built by the cohort.</h3>
               <p>A small project team led by a CMF Team Product Owner, supported by mentor practitioners with 10+ years of experience and exceptionally strong students from the school.</p>
-              <div className="team-grid" style={{ marginTop: 28, gridTemplateColumns: `repeat(${Math.min(4, p.team.length)}, 1fr)` }}>
+              <div className="team-grid auto-team" style={{ marginTop: 28, '--n': Math.min(4, p.team.length) }}>
                 {p.team.map(t => (
                   <div className="team-card" key={t.name}>
                     <div className="team-avatar">{t.initials}</div>

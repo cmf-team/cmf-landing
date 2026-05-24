@@ -95,10 +95,9 @@ function Footer() {
             </a>
             <p>An impact-driven international educational initiative for people with high ethical values and strong technical skills. Tuition-free programs supporting talented individuals, especially from developing countries.</p>
             <div className="footer-social">
-              <a href="#" aria-label="LinkedIn"><IconLinkedIn /></a>
-              <a href="#" aria-label="GitHub"><IconGitHub /></a>
-              <a href="#" aria-label="Twitter"><IconX /></a>
-              <a href="#" aria-label="YouTube"><IconYouTube /></a>
+              <a href="https://www.linkedin.com/school/cmf-ynvrsty" target="_blank" rel="noopener" aria-label="LinkedIn"><IconLinkedIn /></a>
+              <a href="https://github.com/cmf-team" target="_blank" rel="noopener" aria-label="GitHub"><IconGitHub /></a>
+              <a href="https://www.youtube.com/@CMF_YNVRSTY" target="_blank" rel="noopener" aria-label="YouTube"><IconYouTube /></a>
             </div>
           </div>
           <div className="footer-col">
