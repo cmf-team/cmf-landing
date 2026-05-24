@@ -95,10 +95,9 @@ function Footer() {
             </a>
             <p>An impact-driven international educational initiative for people with high ethical values and strong technical skills. Tuition-free programs supporting talented individuals, especially from developing countries.</p>
             <div className="footer-social">
-              <a href="#" aria-label="LinkedIn"><IconLinkedIn /></a>
-              <a href="#" aria-label="GitHub"><IconGitHub /></a>
-              <a href="#" aria-label="Twitter"><IconX /></a>
-              <a href="#" aria-label="YouTube"><IconYouTube /></a>
+              <a href="https://www.linkedin.com/school/cmf-ynvrsty" target="_blank" rel="noopener" aria-label="LinkedIn"><IconLinkedIn /></a>
+              <a href="https://github.com/cmf-team" target="_blank" rel="noopener" aria-label="GitHub"><IconGitHub /></a>
+              <a href="https://www.youtube.com/@CMF_YNVRSTY" target="_blank" rel="noopener" aria-label="YouTube"><IconYouTube /></a>
             </div>
           </div>
           <div className="footer-col">
@@ -151,21 +150,10 @@ function Footer() {
 // ---------- 3D Wireframe Surface Plot ----------
 // Renders a parametric grid surface z = a·exp(-r²/σ²) projected isometrically,
 // with a strong radial glow underneath — matches the inspiration image.
-function WireframeSurface({ width = 560, height = 480, animate = true }) {
-  const ref = useRef(null);
-  const [t, setT] = useState(0);
-  useEffect(() => {
-    if (!animate) return;
-    let raf, start = performance.now();
-    const tick = (now) => {
-      setT((now - start) / 1000);
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [animate]);
-
-  const N = 30;
+// Static render (computed once via useMemo); subtle motion comes from CSS so it
+// stays smooth even on slower machines.
+function WireframeSurface({ width = 560, height = 480 }) {
+  const N = 32;
   const cx = width / 2, cy = height * 0.70;
   // axonometric basis
   const ax = 16, bx = 16;
@@ -176,32 +164,32 @@ function WireframeSurface({ width = 560, height = 480, animate = true }) {
     const x = (i - N/2) / (N/2);
     const y = (j - N/2) / (N/2);
     const r2 = x*x + y*y;
-    const wobble = animate ? 0.05 * Math.sin(t * 0.7 + r2 * 2.5) : 0;
-    const z = Math.exp(-r2 * 2.0) * (0.95 + wobble);
+    const z = Math.exp(-r2 * 2.0) * 0.95;
     const sx = cx + (x * ax + y * bx) * N / 1.6;
     const sy = cy + (x * ay + y * by) * N / 1.6 - z * zk;
     return { sx, sy, z };
   };
 
-  const lines = [];
-  for (let j = 0; j < N; j++) {
-    for (let i = 0; i < N; i++) {
-      const p = project(i, j);
-      if (i < N - 1) {
-        const q = project(i + 1, j);
-        lines.push({ x1: p.sx, y1: p.sy, x2: q.sx, y2: q.sy, z: (p.z + q.z)/2 });
-      }
-      if (j < N - 1) {
-        const q = project(i, j + 1);
-        lines.push({ x1: p.sx, y1: p.sy, x2: q.sx, y2: q.sy, z: (p.z + q.z)/2 });
+  const { lines, peak } = useMemo(() => {
+    const ls = [];
+    for (let j = 0; j < N; j++) {
+      for (let i = 0; i < N; i++) {
+        const p = project(i, j);
+        if (i < N - 1) {
+          const q = project(i + 1, j);
+          ls.push({ x1: p.sx, y1: p.sy, x2: q.sx, y2: q.sy, z: (p.z + q.z)/2 });
+        }
+        if (j < N - 1) {
+          const q = project(i, j + 1);
+          ls.push({ x1: p.sx, y1: p.sy, x2: q.sx, y2: q.sy, z: (p.z + q.z)/2 });
+        }
       }
     }
-  }
-
-  const peak = project(N/2, N/2);
+    return { lines: ls, peak: project(N/2, N/2) };
+  }, [width, height]);
 
   return (
-    <svg ref={ref} viewBox={`0 0 ${width} ${height}`} width="100%" height="100%" style={{ overflow: 'visible' }}>
+    <svg className="surface-svg" viewBox={`0 0 ${width} ${height}`} width="100%" height="100%" style={{ overflow: 'visible' }}>
       <defs>
         {/* soft glow filter */}
         <filter id="surfaceGlow" x="-30%" y="-30%" width="160%" height="160%">
@@ -231,43 +219,45 @@ function WireframeSurface({ width = 560, height = 480, animate = true }) {
         </radialGradient>
       </defs>
 
-      {/* big diffuse floor halo */}
-      <ellipse cx={cx} cy={cy + 10} rx={width * 0.5} ry={height * 0.28} fill="url(#floorGlow)" />
+      {/* big diffuse floor halo — pulses slowly */}
+      <ellipse className="surface-halo" cx={cx} cy={cy + 10} rx={width * 0.5} ry={height * 0.28} fill="url(#floorGlow)" />
 
-      {/* halo around the peak */}
-      <circle cx={peak.sx} cy={peak.sy} r="120" fill="url(#peakHalo)" />
+      {/* halo around the peak — pulses slowly */}
+      <circle className="surface-peak-halo" cx={peak.sx} cy={peak.sy} r="120" fill="url(#peakHalo)" />
 
-      {/* blurred copy underneath for soft outer glow */}
-      <g filter="url(#bigGlow)" opacity="0.55">
-        {lines.map((l, i) => {
-          const z = Math.max(0, Math.min(1, l.z));
-          if (z < 0.05) return null;
-          return <line key={`g${i}`} x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} stroke="#88CCFF" strokeOpacity={0.6 * z + 0.1} strokeWidth="1.2" />;
-        })}
+      {/* the surface itself rotates very slowly around the peak */}
+      <g className="surface-rotor" style={{ transformOrigin: `${peak.sx}px ${peak.sy}px` }}>
+        {/* blurred copy underneath for soft outer glow */}
+        <g filter="url(#bigGlow)" opacity="0.55">
+          {lines.map((l, i) => {
+            const z = Math.max(0, Math.min(1, l.z));
+            if (z < 0.05) return null;
+            return <line key={`g${i}`} x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} stroke="#88CCFF" strokeOpacity={0.6 * z + 0.1} strokeWidth="1.2" />;
+          })}
+        </g>
+
+        {/* main surface — sharper, with mild glow */}
+        <g filter="url(#surfaceGlow)">
+          {lines.map((l, i) => {
+            const z = Math.max(0, Math.min(1, l.z));
+            const color = z > 0.75
+              ? `rgba(220, 240, 255, ${0.85 + z * 0.15})`
+              : z > 0.45
+                ? `rgba(150, 210, 255, ${0.55 + z * 0.35})`
+                : z > 0.20
+                  ? `rgba(110, 175, 230, ${0.35 + z * 0.45})`
+                  : `rgba(80, 130, 200, ${0.18 + z * 0.4})`;
+            return <line key={i} x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} stroke={color} strokeWidth={z > 0.6 ? 1.1 : 0.85} />;
+          })}
+        </g>
       </g>
 
-      {/* main surface — sharper, with mild glow */}
-      <g filter="url(#surfaceGlow)">
-        {lines.map((l, i) => {
-          const z = Math.max(0, Math.min(1, l.z));
-          // brightness ramps from cool-deep to bright cyan-white at peak
-          const color = z > 0.75
-            ? `rgba(220, 240, 255, ${0.85 + z * 0.15})`
-            : z > 0.45
-              ? `rgba(150, 210, 255, ${0.55 + z * 0.35})`
-              : z > 0.20
-                ? `rgba(110, 175, 230, ${0.35 + z * 0.45})`
-                : `rgba(80, 130, 200, ${0.18 + z * 0.4})`;
-          return <line key={i} x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} stroke={color} strokeWidth={z > 0.6 ? 1.1 : 0.85} />;
-        })}
-      </g>
-
-      {/* bright peak point */}
+      {/* bright peak point — stays on top */}
       <g filter="url(#peakGlow)">
         <circle cx={peak.sx} cy={peak.sy} r="6" fill="#FFFFFF" opacity="0.9" />
       </g>
       <circle cx={peak.sx} cy={peak.sy} r="3" fill="#FFFFFF" />
-      <circle cx={peak.sx} cy={peak.sy} r="14" fill="none" stroke="#A8D8FF" strokeOpacity="0.5" strokeWidth="0.8" />
+      <circle className="surface-peak-ring" cx={peak.sx} cy={peak.sy} r="14" fill="none" stroke="#A8D8FF" strokeOpacity="0.5" strokeWidth="0.8" />
     </svg>
   );
 }

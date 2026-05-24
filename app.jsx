@@ -102,43 +102,146 @@ function PortfolioIndex() {
 }
 
 function About() {
+  const schools = [
+    { name: 'Adv. Quant Analytics', tag: 'QUANT',     status: 'Active',   href: '#/program/quant' },
+    { name: 'Options School',      tag: 'OPTIONS',   status: 'Active',   href: '#/program/options' },
+    { name: 'HFT School',          tag: 'HFT',       status: 'Active',   href: '#/program/hft' },
+    { name: 'AI School',           tag: 'AI',        status: 'Active',   href: '#/program/ai' },
+    { name: 'FinTech School',      tag: 'FINTECH',   status: 'Active',   href: '#/program/fintech' },
+    { name: 'Equity Research',     tag: 'EQUITY',    status: 'Active',   href: '#/programs' },
+    { name: 'Web3 School',         tag: 'WEB3',      status: 'Active',   href: '#/programs' },
+    { name: 'Data Science',        tag: 'DS',        status: 'Active',   href: '#/programs' },
+    { name: 'Startup Incubator',   tag: 'INCUBATOR', status: 'Active',   href: '#/programs' },
+    { name: 'Mid-Freq. Strategies',tag: 'MFT',       status: 'Upcoming', href: '#/programs' },
+    { name: 'Global Macro',        tag: 'MACRO',     status: 'Upcoming', href: '#/programs' },
+    { name: 'Superforecasting',    tag: 'FORECAST',  status: 'Upcoming', href: '#/programs' },
+  ];
+
   return (
     <>
+      {/* HERO with mission quote on the right */}
       <section className="page-hero">
         <FormulasBg density="med" />
         <div className="container">
           <a href="#/" className="back-link"><span style={{ display: 'inline-block', transform: 'rotate(180deg)' }}><IconArrow /></span> Back home</a>
-          <span className="eyebrow">/ About CMF</span>
-          <h1 className="h-display h1" style={{ margin: '18px 0 24px' }}>Our mission.</h1>
-          <p className="lede" style={{ fontSize: 18, maxWidth: '64ch' }}>
-            CMF is an impact-driven international educational initiative for people with high
-            ethical values and strong technical skills. Our mission is to support talented
-            individuals — especially from developing countries — to unlock their potential,
-            start meaningful careers and contribute to research and innovation in democratic societies.
-          </p>
-        </div>
-      </section>
-      <section className="section">
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'flex-start' }}>
+          <div className="split-hero" style={{ alignItems: 'flex-start' }}>
             <div>
-              <span className="eyebrow" style={{ display: 'block', marginBottom: 16 }}>/ The CMF Team</span>
-              <h3 className="h-display h2" style={{ marginBottom: 24 }}>Practitioners and<br/>strong students.</h3>
-              <p className="lede" style={{ marginBottom: 20 }}>It is rare to find a team where practitioners — many with 10+ years of experience — work together to build and execute real-world projects within an educational initiative alongside exceptionally strong students.</p>
-              <p className="lede">Open roles include Product Owners on real quant, AI and Web3 projects; lecturers and TAs; mentors and founders building startups in our Business Incubator; managers across our online university (YNVRSTY) and EdTech labs.</p>
+              <span className="eyebrow">/ About CMF</span>
+              <h1 className="h-display h1" style={{ margin: '18px 0 24px' }}>Our mission.</h1>
+              <p className="lede" style={{ fontSize: 19, marginBottom: 24 }}>
+                CMF is an impact-driven international educational initiative for
+                people with high ethical values and strong technical skills.
+              </p>
+              <p className="lede">
+                Our mission is to support talented individuals — especially from
+                developing countries — to unlock their potential, start meaningful
+                careers and contribute to research and innovation in democratic
+                societies.
+              </p>
             </div>
-            <ul className="check-list">
-              <li><b>Tuition-free</b> — the only investment we ask for is your time and commitment.</li>
-              <li><b>~20 hrs/month</b> for CMF Team participants on mission-driven projects.</li>
-              <li><b>Schools</b> in Quantitative Finance, HFT, Options, AI, Data Science, FinTech, Equity Research and Web3.</li>
-              <li><b>Upcoming</b> schools in Mid-Frequency Strategies, Global Macro and Superforecasting.</li>
-              <li><b>Alumni</b> have joined Google, Goldman Sachs, McKinsey and many others.</li>
-            </ul>
+            <aside className="mission-quote">
+              <div className="quote-mark">&ldquo;</div>
+              <p>It is rare to find a team where practitioners with 10+ years of experience work together to build and execute real-world projects within an educational initiative alongside exceptionally strong students.</p>
+              <div className="quote-attr">
+                <div className="quote-attr-dash" />
+                <span>The CMF Team</span>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
 
+      {/* STATS */}
+      <section className="section-tight">
+        <div className="container">
+          <div className="stats">
+            <div className="stat">
+              <div className="stat-num"><span className="g">12</span></div>
+              <div className="stat-label">Schools &amp; programs</div>
+            </div>
+            <div className="stat">
+              <div className="stat-num">100%</div>
+              <div className="stat-label">Tuition-free</div>
+            </div>
+            <div className="stat">
+              <div className="stat-num"><span className="g">~20</span></div>
+              <div className="stat-label">Hrs / month · team</div>
+            </div>
+            <div className="stat">
+              <div className="stat-num">Intl.</div>
+              <div className="stat-label">Cohorts worldwide</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CMF Team — 2-col with info card */}
+      <section className="section">
+        <div className="container">
+          <div className="two-col">
+            <div>
+              <span className="eyebrow" style={{ display: 'block', marginBottom: 16 }}>/ The CMF Team</span>
+              <h2 className="h-display h2" style={{ marginBottom: 28 }}>Practitioners and<br/>strong students.</h2>
+              <p className="lede" style={{ marginBottom: 22 }}>It is rare to find a team where practitioners — many with 10+ years of experience — work together to build and execute real-world projects within an educational initiative alongside exceptionally strong students.</p>
+              <p className="lede">Open roles include Product Owners on real quant, AI and Web3 projects; lecturers and TAs; mentors and founders building startups in our Business Incubator; managers across our online university (YNVRSTY) and EdTech labs.</p>
+            </div>
+            <div className="info-card">
+              <div className="info-card-head">CMF · at a glance</div>
+              <div className="info-row">
+                <span className="info-key">Tuition</span>
+                <span className="info-val">100% free</span>
+              </div>
+              <div className="info-row">
+                <span className="info-key">Commitment</span>
+                <span className="info-val">~20 hrs / month</span>
+              </div>
+              <div className="info-row">
+                <span className="info-key">Mentors</span>
+                <span className="info-val">10+ yrs experience</span>
+              </div>
+              <div className="info-row">
+                <span className="info-key">Alumni at</span>
+                <span className="info-val">Google · GS · McKinsey</span>
+              </div>
+              <div className="info-row">
+                <span className="info-key">Schools</span>
+                <span className="info-val">9 active &middot; 3 upcoming</span>
+              </div>
+              <div className="info-row">
+                <span className="info-key">Initiative</span>
+                <span className="info-val">YNVRSTY · CMF · AI Institute</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ALL SCHOOLS */}
       <section className="section" style={{ background: 'rgba(14,27,54,0.4)' }}>
+        <div className="container">
+          <div className="section-head">
+            <div className="left">
+              <span className="eyebrow">/ The full curriculum</span>
+              <h2 className="h-display h2">Twelve schools.<br/>One mission.</h2>
+            </div>
+            <p className="lede">From quantitative finance to AI agents, from HFT to global macro — CMF spans the technical frontier of modern finance. Nine schools are running today; three more open in 2026.</p>
+          </div>
+          <div className="schools-strip">
+            {schools.map(s => (
+              <a key={s.name} href={s.href} className={`school-chip ${s.status === 'Upcoming' ? 'upcoming' : ''}`}>
+                <div className="school-chip-head">
+                  <span className="school-chip-tag">{s.tag}</span>
+                  <span className="school-chip-status">{s.status}</span>
+                </div>
+                <div className="school-chip-name">{s.name}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WAYS TO PARTICIPATE */}
+      <section className="section">
         <div className="container">
           <div className="section-head">
             <div className="left">
@@ -148,21 +251,36 @@ function About() {
             <p className="lede">We are always excited to meet ethical and technically strong people who want to participate in CMF.</p>
           </div>
           <div className="values">
-            <div className="value">
+            <a className="value participate-card" href="#/apply">
               <div className="value-icon"><IconAI /></div>
               <h4>Student</h4>
               <p>Apply to a school — AI, Options, HFT, Quant, FinTech or the Startup Incubator. Build real projects with practitioner mentors.</p>
-            </div>
-            <div className="value">
+              <span className="card-link">Apply to a school →</span>
+            </a>
+            <a className="value participate-card" href="#/contact">
               <div className="value-icon"><IconQuant /></div>
               <h4>Product Owner</h4>
               <p>Lead a small student team on a real project within Options School, HFT School or the Advanced Quantitative Analytics Program.</p>
-            </div>
-            <div className="value">
+              <span className="card-link">Join the CMF Team →</span>
+            </a>
+            <a className="value participate-card" href="#/contact">
               <div className="value-icon"><IconIncubator /></div>
               <h4>Lecturer / Mentor</h4>
               <p>Design and deliver courses, workshops or interview-prep sessions. Share expertise and deepen your own understanding.</p>
-            </div>
+              <span className="card-link">Get in touch →</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA tail */}
+      <section className="section-tight">
+        <div className="container" style={{ textAlign: 'center', padding: '60px 0' }}>
+          <p className="eyebrow" style={{ display: 'block', marginBottom: 18 }}>Cohorts open year-round</p>
+          <h2 className="h-display h2" style={{ marginBottom: 30 }}>Ready to join?<br/>The CMF mission is open.</h2>
+          <div style={{ display: 'inline-flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center' }}>
+            <a href="#/apply" className="btn btn-gold">Apply now <IconArrow /></a>
+            <a href="#/contact" className="btn btn-outline">Talk to admissions</a>
           </div>
         </div>
       </section>
@@ -185,7 +303,7 @@ function Contact() {
       </section>
       <section className="section">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 80 }}>
+          <div className="contact-grid">
             <div>
               <div style={{ marginBottom: 36 }}>
                 <div className="mono" style={{ fontSize: 11, color: 'var(--gold)', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 10 }}>Admissions</div>
@@ -291,7 +409,7 @@ function Apply() {
             <div>
               <h3 className="h-display h3" style={{ marginBottom: 20 }}>Choose your track.</h3>
               <p className="muted" style={{ marginBottom: 28 }}>You can change this later, or stack a second track at the next intake.</p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+              <div className="tracks-grid">
                 {tracks.map(t => (
                   <button key={t.id} onClick={() => setData({ ...data, track: t.id })}
                     style={{
