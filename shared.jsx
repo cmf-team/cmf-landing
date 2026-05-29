@@ -43,14 +43,18 @@ function Nav({ route }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const links = [
-    { href: '#/', label: 'Home', match: ['', 'home'] },
-    { href: '#/programs', label: 'Programs', match: ['programs', 'program'] },
-    { href: '#/portfolio', label: 'Portfolio', match: ['portfolio', 'project'] },
-    { href: '#/about', label: 'About', match: ['about'] },
-    { href: '#/contact', label: 'Contact', match: ['contact'] },
-  ];
+  const links = useList('nav.links');
+  const brandAbbr = useField('brand.abbr');
+  const brandSub = useField('brand.sub');
+  const applyLabel = useField('nav.applyLabel');
   const activeKey = route.split('/')[0] || '';
+  const matchKey = (href) => {
+    const seg = href.replace(/^#\/?/, '').split('/')[0] || '';
+    if (seg === '') return activeKey === '' || activeKey === 'home';
+    if (seg === 'programs') return activeKey === 'programs' || activeKey === 'program';
+    if (seg === 'portfolio') return activeKey === 'portfolio' || activeKey === 'project';
+    return activeKey === seg;
+  };
 
   return (
     <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
@@ -58,21 +62,21 @@ function Nav({ route }) {
         <a href="#/" className="brand" aria-label="CMF home">
           <img src="assets/cmf-logo-white.png" alt="CMF" className="brand-mark" />
           <div className="brand-text">
-            <b>CMF</b>
-            <span>Center of Mathematical Finance</span>
+            <b><F path="brand.abbr" /></b>
+            <span><F path="brand.sub" /></span>
           </div>
         </a>
         <nav className="nav-links" aria-label="Primary">
-          {links.map(l => (
+          {links.map((l, i) => (
             <a
-              key={l.href}
+              key={i}
               href={l.href}
-              className={`nav-link desktop-only ${l.match.includes(activeKey) ? 'active' : ''}`}
+              className={`nav-link desktop-only ${matchKey(l.href) ? 'active' : ''}`}
             >
-              {l.label}
+              <F path={`nav.links.${i}.label`} />
             </a>
           ))}
-          <a href="#/apply" className="btn btn-gold btn-sm">Apply</a>
+          <a href="#/apply" className="btn btn-gold btn-sm"><F path="nav.applyLabel" /></a>
         </nav>
       </div>
     </header>
@@ -81,6 +85,8 @@ function Nav({ route }) {
 
 // ---------- Footer ----------
 function Footer() {
+  const cols = useList('footer.cols');
+  const social = useList('footer.social');
   return (
     <footer className="footer">
       <div className="container">
@@ -89,58 +95,32 @@ function Footer() {
             <a href="#/" className="brand">
               <img src="assets/cmf-logo-white.png" alt="CMF" className="brand-mark" />
               <div className="brand-text">
-                <b>CMF</b>
-                <span>Center of Mathematical Finance</span>
+                <b><F path="brand.abbr" /></b>
+                <span><F path="brand.sub" /></span>
               </div>
             </a>
-            <p>An impact-driven international educational initiative for people with high ethical values and strong technical skills. Tuition-free programs supporting talented individuals, especially from developing countries.</p>
+            <F as="p" path="footer.blurb" multiline />
             <div className="footer-social">
-              <a href="https://www.linkedin.com/school/cmf-ynvrsty" target="_blank" rel="noopener" aria-label="LinkedIn"><IconLinkedIn /></a>
-              <a href="https://github.com/cmf-team" target="_blank" rel="noopener" aria-label="GitHub"><IconGitHub /></a>
-              <a href="https://www.youtube.com/@CMF_YNVRSTY" target="_blank" rel="noopener" aria-label="YouTube"><IconYouTube /></a>
+              {social.map((s, i) => {
+                const Ico = ICONS[s.icon] || IconLinkedIn;
+                return <a key={i} href={s.href} target="_blank" rel="noopener" aria-label={s.label}><Ico /></a>;
+              })}
             </div>
           </div>
-          <div className="footer-col">
-            <h5>Schools</h5>
-            <ul>
-              <li><a href="#/program/ai">AI School</a></li>
-              <li><a href="#/program/options">Options School</a></li>
-              <li><a href="#/program/hft">HFT School</a></li>
-              <li><a href="#/program/quant">Adv. Quant Analytics</a></li>
-              <li><a href="#/program/fintech">FinTech School</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h5>Portfolio</h5>
-            <ul>
-              <li><a href="#/project/options-backtester">Options Backtester</a></li>
-              <li><a href="#/project/pricing-curve">Pricing & Curves</a></li>
-              <li><a href="#/project/ai-agent-layer">AI Agent Layer</a></li>
-              <li><a href="#/portfolio">All projects</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h5>About</h5>
-            <ul>
-              <li><a href="#/about">Our mission</a></li>
-              <li><a href="#/about">CMF Team</a></li>
-              <li><a href="#/about">Alumni</a></li>
-              <li><a href="#/about">YNVRSTY</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h5>Contact</h5>
-            <ul>
-              <li><a href="mailto:admissions@cmf.edu">admissions@cmf.edu</a></li>
-              <li><a href="#/contact">Join CMF Team</a></li>
-              <li><a href="#/contact">Partnerships</a></li>
-              <li><a href="#/contact">Press</a></li>
-            </ul>
-          </div>
+          {cols.map((col, ci) => (
+            <div className="footer-col" key={ci}>
+              <h5><F path={`footer.cols.${ci}.head`} /></h5>
+              <ul>
+                {col.links.map((lnk, li) => (
+                  <li key={li}><a href={lnk.href}><F path={`footer.cols.${ci}.links.${li}.label`} /></a></li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
         <div className="footer-bottom">
-          <span>© 2026 Center of Mathematical Finance. Impact-driven · International · Tuition-free.</span>
-          <span>v 2026.1 · Cohort active</span>
+          <F path="footer.copyright" />
+          <F path="footer.version" />
         </div>
       </div>
     </footer>
@@ -445,8 +425,18 @@ const IconX = () => <Icon size={16}><path d="M4 4 L20 20 M20 4 L4 20" /></Icon>;
 const IconYouTube = () => <Icon size={16}><rect x="2" y="6" width="20" height="12" rx="2" /><path d="M10 9 L15 12 L10 15 Z" fill="currentColor" /></Icon>;
 
 // expose
+// ---------- Icon registry (string-key → component, for store-driven content) ----------
+const ICONS = {
+  ai: IconAI, web3: IconWeb3, quant: IconQuant, ds: IconDS,
+  options: IconOptions, hft: IconHFT, fintech: IconFinTech, incubator: IconIncubator,
+  rigor: IconRigor, practice: IconPractice, intuition: IconIntuition,
+  linkedin: IconLinkedIn, github: IconGitHub, youtube: IconYouTube, x: IconX,
+};
+const ICON_KEYS = ['ai', 'options', 'hft', 'quant', 'ds', 'web3', 'fintech', 'incubator', 'rigor', 'practice', 'intuition'];
+const CHART_VARIANTS = ['curve', 'surface', 'bars', 'heatmap', 'network', 'orderbook'];
+
 Object.assign(window, {
-  Tex,
+  Tex, ICONS, ICON_KEYS, CHART_VARIANTS,
   Nav, Footer, WireframeSurface, FormulasBg, ChartThumb,
   IconRigor, IconPractice, IconIntuition,
   IconAI, IconWeb3, IconQuant, IconDS, IconArrow,
