@@ -1,0 +1,101 @@
+{
+  "order": 4,
+  "id": "fintech",
+  "num": "05",
+  "tag": "FINTECH SCHOOL",
+  "icon": "fintech",
+  "title": "FinTech Equity Analyst Program",
+  "desc": "Investments in fintech, digital assets and AI in finance — lectures, expert interviews and student project presentations.",
+  "courses": [
+    "Course 1 · FinTech Business Models & Universe",
+    "Course 2 · Data, AI & Regulation in Finance"
+  ],
+  "detailTag": "FINTECH SCHOOL",
+  "subtitle": "Investments in fintech, digital assets and AI in finance",
+  "intro": "Designed for acting and aspiring equity analysts who wish to explore investments in fintech, digital assets and AI in finance — combining lectures, expert interviews and home assignments with student project presentations.",
+  "meta": [
+    {
+      "k": "Duration",
+      "v": "Until end of June"
+    },
+    {
+      "k": "Format",
+      "v": "Online · Sundays"
+    },
+    {
+      "k": "Cohort",
+      "v": "Cohort 2026"
+    },
+    {
+      "k": "Language",
+      "v": "English"
+    }
+  ],
+  "modules": [
+    {
+      "num": "01",
+      "title": "Financial Institution Business Models",
+      "tag": "2 WEEKS",
+      "desc": "Value chains by vertical: payments, credit, capital markets and insurance."
+    },
+    {
+      "num": "02",
+      "title": "Blockchain & Digital Assets",
+      "tag": "1 WEEK",
+      "desc": "How tokens, settlement and custody reshape financial primitives."
+    },
+    {
+      "num": "03",
+      "title": "Consumer Sentiment & Product Expectations",
+      "tag": "1 WEEK",
+      "desc": "The demand side of fintech — surveys, behavioural signals and product fit."
+    },
+    {
+      "num": "04",
+      "title": "Fintech Investable Universe",
+      "tag": "2 WEEKS",
+      "desc": "PE and VC holdings, ETF composition, public-company valuation and M&A dynamics."
+    },
+    {
+      "num": "05",
+      "title": "Data and AI in Finance",
+      "tag": "2 WEEKS",
+      "desc": "Markets for financial data and where AI applications create real value in the industry."
+    },
+    {
+      "num": "06",
+      "title": "Policy & Regulation",
+      "tag": "1 WEEK",
+      "desc": "Implications for policy, regulation and the durability of fintech business models."
+    }
+  ],
+  "outcomes": [
+    "Value a fintech company from its annual report end-to-end",
+    "Build a thesis-driven fintech portfolio across verticals",
+    "Identify AI applications most likely to reshape finance",
+    "Communicate fintech investment ideas to investment committees"
+  ],
+  "audience": [
+    "Acting and aspiring equity analysts",
+    "Investors wanting deeper fintech and digital-asset coverage",
+    "Strategy and corporate-development professionals"
+  ],
+  "instructors": [
+    {
+      "initials": "FT",
+      "name": "FinTech Lead",
+      "role": "Lead Instructor",
+      "bio": "Career equity research across fintech and digital assets."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the admission essay?",
+      "a": "\"Your Fintech Investment Targets\" — three companies you would invest in, your reasoning, what allocations to avoid, and the fintech investor you admire most. 400–500 words, no LLM-generated submissions accepted."
+    },
+    {
+      "q": "How many hours per week?",
+      "a": "10–20 hours per week of lectures, self-study and project work."
+    }
+  ]
+}

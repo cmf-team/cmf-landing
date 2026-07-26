@@ -1,0 +1,145 @@
+{
+  "order": 3,
+  "id": "quant",
+  "num": "04",
+  "tag": "ADV. QUANT ANALYTICS",
+  "icon": "quant",
+  "title": "Advanced Quantitative Analytics",
+  "desc": "From binomial trees to Monte Carlo. Derivatives pricing, stochastic calculus and applied quantitative research.",
+  "courses": [
+    "Course 1 · Derivatives Pricing & Stochastic Calculus",
+    "Course 2 · Applied Quantitative Research"
+  ],
+  "detailTag": "ADV. QUANT ANALYTICS · TRACK 04",
+  "subtitle": "From financial intuition to rigorous quantitative modeling",
+  "intro": "A comprehensive review of the key concepts, models and pricing techniques behind modern derivatives — for students and professionals in mathematics, computer science, physics and quantitative finance. Taught with the depth required to read the literature, the rigor to prove the results, and the engineering to ship them on real market data.",
+  "meta": [
+    {
+      "k": "Duration",
+      "v": "14 weeks"
+    },
+    {
+      "k": "Format",
+      "v": "Online · Weekly"
+    },
+    {
+      "k": "Cohort",
+      "v": "Cohort 2026"
+    },
+    {
+      "k": "Language",
+      "v": "English"
+    }
+  ],
+  "modules": [
+    {
+      "num": "01",
+      "title": "Binomial & Black–Scholes Models",
+      "tag": "2 WEEKS",
+      "desc": "The two anchors of derivatives pricing, derived from no-arbitrage and martingale arguments."
+    },
+    {
+      "num": "02",
+      "title": "Greeks: Delta, Gamma, Theta, Vega",
+      "tag": "1 WEEK",
+      "desc": "What they measure, how they trade, and why they fail — Δ, Γ, Θ, ν and their interrelationships."
+    },
+    {
+      "num": "03",
+      "title": "Volatility & the √T rule",
+      "tag": "1 WEEK",
+      "desc": "Historical, implied, smile, skew and surface construction with arbitrage-free interpolation."
+    },
+    {
+      "num": "04",
+      "title": "Bloomberg Option Pricing & Yield Curves",
+      "tag": "1 WEEK",
+      "desc": "Hands-on with live tickers, swap curves and vol surfaces from the desk."
+    },
+    {
+      "num": "05",
+      "title": "PDE Methods & Finite Differences",
+      "tag": "2 WEEKS",
+      "desc": "The Black–Scholes equation. Implicit, explicit and Crank–Nicolson schemes in Python."
+    },
+    {
+      "num": "06",
+      "title": "Itô Processes, Martingales & Risk-Neutral Measure",
+      "tag": "2 WEEKS",
+      "desc": "The machinery, end to end — through to the Fundamental Theorem of Asset Pricing."
+    },
+    {
+      "num": "07",
+      "title": "Feynman–Kac Lemma",
+      "tag": "1 WEEK",
+      "desc": "The bridge between PDE and probabilistic representations of derivative prices."
+    },
+    {
+      "num": "08",
+      "title": "Barrier & Asian Options",
+      "tag": "2 WEEKS",
+      "desc": "Path-dependent derivatives — up/down · in/out — and the calibration that makes them tradeable."
+    },
+    {
+      "num": "09",
+      "title": "Monte Carlo Pricing & Simulation",
+      "tag": "2 WEEKS",
+      "desc": "Variance reduction, quasi-MC, and Longstaff–Schwartz for early-exercise features."
+    }
+  ],
+  "outcomes": [
+    "Price European, American and exotic options with confidence",
+    "Read and reproduce derivatives papers from the literature",
+    "Calibrate volatility surfaces and yield curves on real data",
+    "Build and validate Monte Carlo pricers in production code",
+    "Reason fluently in the language of Greeks and risk"
+  ],
+  "audience": [
+    "Mathematicians and physicists moving into quant finance",
+    "Software engineers joining a trading or pricing team",
+    "Computer scientists with a strong analytical background",
+    "Junior quants and researchers seeking a rigorous refresher"
+  ],
+  "instructors": [
+    {
+      "initials": "AL",
+      "name": "Practitioner Mentor",
+      "role": "Lead Instructor",
+      "bio": "10+ years on the derivatives desk. PhD in stochastic analysis."
+    },
+    {
+      "initials": "NB",
+      "name": "Volatility Modeller",
+      "role": "Co-instructor",
+      "bio": "Former head of vol modelling at a top-tier market maker."
+    },
+    {
+      "initials": "YK",
+      "name": "Quant Developer",
+      "role": "TA Lead",
+      "bio": "Senior quant developer. Runs the Python implementation track."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What background do I need?",
+      "a": "A solid grasp of real analysis, probability and linear algebra. Comfort with Python is expected. We do not assume prior finance coursework — the financial intuition is built from first principles."
+    },
+    {
+      "q": "How much time per week should I plan for?",
+      "a": "Roughly 10–20 hours per week across live sessions, problem sets, code and reading. The track is intense by design."
+    },
+    {
+      "q": "Is the program remote or in-person?",
+      "a": "Online. Live sessions stream and are recorded; collaboration happens across the international cohort."
+    },
+    {
+      "q": "Is there a fee?",
+      "a": "No — CMF programs are tuition-free. The only investment we ask for is your time and commitment."
+    },
+    {
+      "q": "What happens to alumni?",
+      "a": "CMF alumni have joined companies like Google, Goldman Sachs, McKinsey and many others — and many return to mentor on the CMF Team."
+    }
+  ]
+}

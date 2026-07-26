@@ -1,0 +1,144 @@
+{
+  "brand": {
+    "abbr": "CMF",
+    "name": "Center of Mathematical Finance",
+    "sub": "Center of Mathematical Finance"
+  },
+  "nav": {
+    "applyLabel": "Apply",
+    "links": [
+      {
+        "label": "Home",
+        "href": "#/"
+      },
+      {
+        "label": "Programs",
+        "href": "#/programs"
+      },
+      {
+        "label": "Portfolio",
+        "href": "#/portfolio"
+      },
+      {
+        "label": "About",
+        "href": "#/about"
+      },
+      {
+        "label": "Contact",
+        "href": "#/contact"
+      }
+    ]
+  },
+  "footer": {
+    "blurb": "An impact-driven international educational initiative for people with high ethical values and strong technical skills. Tuition-free programs supporting talented individuals, especially from developing countries.",
+    "social": [
+      {
+        "label": "LinkedIn",
+        "icon": "linkedin",
+        "href": "https://www.linkedin.com/school/cmf-ynvrsty"
+      },
+      {
+        "label": "GitHub",
+        "icon": "github",
+        "href": "https://github.com/cmf-team"
+      },
+      {
+        "label": "YouTube",
+        "icon": "youtube",
+        "href": "https://www.youtube.com/@CMF_YNVRSTY"
+      }
+    ],
+    "cols": [
+      {
+        "head": "Schools",
+        "links": [
+          {
+            "label": "AI School",
+            "href": "#/program/ai"
+          },
+          {
+            "label": "Options School",
+            "href": "#/program/options"
+          },
+          {
+            "label": "HFT School",
+            "href": "#/program/hft"
+          },
+          {
+            "label": "Adv. Quant Analytics",
+            "href": "#/program/quant"
+          },
+          {
+            "label": "FinTech School",
+            "href": "#/program/fintech"
+          }
+        ]
+      },
+      {
+        "head": "Portfolio",
+        "links": [
+          {
+            "label": "Options Backtester",
+            "href": "#/project/options-backtester"
+          },
+          {
+            "label": "Pricing & Curves",
+            "href": "#/project/pricing-curve"
+          },
+          {
+            "label": "AI Agent Layer",
+            "href": "#/project/ai-agent-layer"
+          },
+          {
+            "label": "All projects",
+            "href": "#/portfolio"
+          }
+        ]
+      },
+      {
+        "head": "About",
+        "links": [
+          {
+            "label": "Our mission",
+            "href": "#/about"
+          },
+          {
+            "label": "CMF Team",
+            "href": "#/about"
+          },
+          {
+            "label": "Alumni",
+            "href": "#/about"
+          },
+          {
+            "label": "YNVRSTY",
+            "href": "#/about"
+          }
+        ]
+      },
+      {
+        "head": "Contact",
+        "links": [
+          {
+            "label": "admissions@cmf.edu",
+            "href": "mailto:admissions@cmf.edu"
+          },
+          {
+            "label": "Join CMF Team",
+            "href": "#/contact"
+          },
+          {
+            "label": "Partnerships",
+            "href": "#/contact"
+          },
+          {
+            "label": "Press",
+            "href": "#/contact"
+          }
+        ]
+      }
+    ],
+    "copyright": "© 2026 Center of Mathematical Finance. Impact-driven · International · Tuition-free.",
+    "version": "v 2026.1 · Cohort active"
+  }
+}

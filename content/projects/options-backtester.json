@@ -1,0 +1,112 @@
+{
+  "order": 0,
+  "id": "options-backtester",
+  "title": "Options Backtester",
+  "cohort": "OPTIONS SCHOOL",
+  "variant": "bars",
+  "tint": "gold",
+  "tags": [
+    "Options",
+    "Backtesting"
+  ],
+  "desc": "A robust simulation engine for evaluating options strategies under realistic market conditions — portfolio-level analysis, regime sensitivity and transaction-cost-aware validation.",
+  "detailCohort": "OPTIONS SCHOOL · CORE R&D",
+  "summary": "A robust simulation engine for evaluating options strategies under realistic market conditions — with support for portfolio-level analysis, regime sensitivity and transaction-cost-aware validation.",
+  "detailTags": [
+    "Options",
+    "Backtesting",
+    "Engine"
+  ],
+  "duration": "2026 · Ongoing",
+  "team": [
+    {
+      "initials": "PR",
+      "name": "Project Lead",
+      "role": "Product Owner"
+    },
+    {
+      "initials": "MG",
+      "name": "Strategy Eng.",
+      "role": "Strategy Logic"
+    },
+    {
+      "initials": "LT",
+      "name": "Infra Eng.",
+      "role": "Simulation Core"
+    },
+    {
+      "initials": "AB",
+      "name": "Research",
+      "role": "Validation"
+    }
+  ],
+  "metrics": [
+    {
+      "v": "Portfolio",
+      "l": "Multi-leg support"
+    },
+    {
+      "v": "Regime-aware",
+      "l": "Stress scenarios"
+    },
+    {
+      "v": "TCA-built-in",
+      "l": "Realistic costs"
+    },
+    {
+      "v": "Tick-level",
+      "l": "Granularity"
+    }
+  ],
+  "problem": {
+    "title": "The problem",
+    "paras": [
+      "Options strategies that look attractive in a simplified backtest can fall apart under realistic execution, regime shifts and book-level risk constraints. A research-grade backtester needs to capture all three honestly.",
+      "Existing open-source backtesters tend to specialize: portfolio analytics without proper greek-aware execution, or single-strategy simulators without portfolio aggregation. The desk needed one engine that did both."
+    ],
+    "chart": {
+      "variant": "bars",
+      "label": "Strategy PnL across stress regimes"
+    }
+  },
+  "approach": {
+    "title": "Our approach",
+    "paras": [
+      "A modular simulation core decouples market data, pricing, strategy logic and portfolio aggregation — each component pluggable and individually testable. Strategies are scripted as event-driven generators that react to a synchronized clock of quotes, fills and corporate actions.",
+      "Transaction cost modeling is first-class: spread cost, exchange fees, gamma-aware slippage and an optional impact model calibrated from execution traces. Regime sensitivity is built in via parametric scenario overlays."
+    ],
+    "list": [
+      {
+        "t": "Event-driven simulation core",
+        "d": "Synchronized clock over quotes, fills and corporate actions."
+      },
+      {
+        "t": "Greek-aware execution layer",
+        "d": "Honest fills with spread, fees and impact."
+      },
+      {
+        "t": "Portfolio aggregation",
+        "d": "Multi-strategy, multi-underlier book accounting."
+      },
+      {
+        "t": "Regime overlays",
+        "d": "Stress scenarios layered on historical replay."
+      }
+    ],
+    "chart": {
+      "variant": "curve",
+      "label": "Cumulative PnL · validation strategy"
+    }
+  },
+  "results": {
+    "title": "Results & impact",
+    "paras": [
+      "The backtester is now the standard evaluation engine across Options School projects. New strategy ideas move from notebook to portfolio-level evaluation in under a day, with TCA and regime sensitivity built in.",
+      "Code is open-sourced to the CMF Team for reuse across HFT and Advanced Quant Analytics tracks."
+    ],
+    "chart": {
+      "variant": "heatmap",
+      "label": "Strategy × regime sensitivity matrix"
+    }
+  }
+}

@@ -92,15 +92,36 @@ editors work from anywhere.
 
 ---
 
+## How content is stored
+
+`content/` is the source of truth and what the CMS edits:
+
+```
+content/
+  settings.json        brand, navigation, footer
+  home.json            the home page
+  pages.json           about / contact / apply / index pages
+  programs/*.json      one file per program   -> "Programs" collection
+  projects/*.json      one file per project   -> "Projects" collection
+```
+
+`content.json` at the repo root is a **build artifact** (gitignored) — the
+build merges `content/` into it so the site still fetches a single file.
+Never edit it; your changes will be overwritten.
+
+Programs and projects are separate files so the CMS can offer real collections:
+a browsable list, create, duplicate, delete. Site ordering comes from the
+`order` field on each entry (lower first); the merge strips it before the site
+sees it.
+
 ## Changing the content structure
 
-`admin/config.yml` is generated, not hand-written — 209 fields derived from
-`content.json` so the schema cannot silently drift from the data (a misnamed
-field doesn't error, it just drops that content on save).
+`admin/config.yml` is generated, not hand-written, so the schema cannot
+silently drift from the data — a misnamed field doesn't error, it just drops
+that content on save.
 
-After changing the *shape* of `content.json` (new keys, not new values):
+After changing the *shape* of content (new keys, not new values):
 
 ```sh
-node scripts/gen-cms-schema.js > /tmp/fields.yml
-# then splice into admin/config.yml below `fields:`
+node scripts/gen-cms-schema.js > admin/config.yml
 ```

@@ -10,3 +10,6 @@ node_modules/
 
 # Cloudflare Worker local state
 oauth-worker/.wrangler/
+
+# Generated from content/ by scripts/merge-content.js
+content.json

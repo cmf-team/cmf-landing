@@ -1,0 +1,95 @@
+{
+  "order": 5,
+  "id": "hft-market-making",
+  "title": "HFT Market Making",
+  "cohort": "HFT SCHOOL",
+  "variant": "curve",
+  "tint": "gold",
+  "tags": [
+    "HFT",
+    "Microstructure"
+  ],
+  "desc": "Latency-aware market making research with inventory-management and adverse-selection controls — validated on live exchange feeds.",
+  "detailCohort": "HFT SCHOOL · CORE",
+  "summary": "Latency-aware market making research with inventory-management and adverse-selection controls — validated on live exchange feeds.",
+  "detailTags": [
+    "HFT",
+    "Microstructure",
+    "Market Making"
+  ],
+  "duration": "2026 · Ongoing",
+  "team": [
+    {
+      "initials": "TG",
+      "name": "Project Lead",
+      "role": "HFT Lead"
+    },
+    {
+      "initials": "RD",
+      "name": "Quant",
+      "role": "Strategy"
+    }
+  ],
+  "metrics": [
+    {
+      "v": "Queue-aware",
+      "l": "Microstructure logic"
+    },
+    {
+      "v": "Inventory",
+      "l": "Risk-controlled"
+    },
+    {
+      "v": "Live",
+      "l": "On exchange feeds"
+    },
+    {
+      "v": "Low-latency",
+      "l": "System design"
+    }
+  ],
+  "problem": {
+    "title": "The problem",
+    "paras": [
+      "Successful market making at high frequency hinges on three coupled problems: queue position, adverse selection, and inventory risk — each easy in isolation, brutal when combined."
+    ],
+    "chart": {
+      "variant": "orderbook",
+      "label": "Order book snapshot · top-of-book"
+    }
+  },
+  "approach": {
+    "title": "Our approach",
+    "paras": [
+      "Quoting policy with queue-position estimation, adaptive spreads and inventory-aware skews. Latency-critical components in optimized Python with C++ extensions where the budget demands it."
+    ],
+    "list": [
+      {
+        "t": "Queue estimation",
+        "d": "Probability of fill given current state."
+      },
+      {
+        "t": "Inventory skews",
+        "d": "Quote adjustments to manage position."
+      },
+      {
+        "t": "Adverse-selection control",
+        "d": "Quote widening on toxic flow signals."
+      }
+    ],
+    "chart": {
+      "variant": "bars",
+      "label": "Daily PnL distribution"
+    }
+  },
+  "results": {
+    "title": "Results & impact",
+    "paras": [
+      "A validated market-making research stack that the cohort uses as a foundation for further execution research."
+    ],
+    "chart": {
+      "variant": "curve",
+      "label": "Cumulative PnL · live validation"
+    }
+  }
+}

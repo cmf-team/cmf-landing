@@ -183,10 +183,9 @@ awk -v js="$JS_FILE" -v css="$CSS_FILE" -v csp="$CSP" '
 # ---------------------------------------------------------------------------
 cp -R assets "$OUT/assets"
 
-# content.json is the CMS-edited source of truth, fetched at runtime.
-[ -f content.json ] || { echo "error: content.json missing" >&2; exit 1; }
-node -e 'JSON.parse(require("fs").readFileSync("content.json","utf8"))' \
-  || { echo "error: content.json is not valid JSON" >&2; exit 1; }
+# content/ is the CMS-edited source of truth; content.json is generated from it
+# so the site keeps loading a single file.
+node scripts/merge-content.js || { echo "error: merging content/ failed" >&2; exit 1; }
 cp content.json "$OUT/content.json"
 
 # CMS admin page. The broker URL is injected here rather than committed, so the

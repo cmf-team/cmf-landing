@@ -1,0 +1,215 @@
+{
+  "programsIndex": {
+    "eyebrow": "/ Programs",
+    "title": "All programs.",
+    "lede": "Our schools span quantitative finance, HFT, options, AI, FinTech and more. Take one, stack several, or design a custom path with admissions."
+  },
+  "portfolioIndex": {
+    "eyebrow": "/ Portfolio",
+    "title": "Projects.",
+    "lede": "Capstone work and ongoing research from CMF cohorts."
+  },
+  "about": {
+    "eyebrow": "/ About CMF",
+    "title": "Our mission.",
+    "lede1": "CMF is an impact-driven international educational initiative for people with high ethical values and strong technical skills.",
+    "lede2": "Our mission is to support talented individuals — especially from developing countries — to unlock their potential, start meaningful careers and contribute to research and innovation in democratic societies.",
+    "quote": "It is rare to find a team where practitioners with 10+ years of experience work together to build and execute real-world projects within an educational initiative alongside exceptionally strong students.",
+    "quoteAttr": "The CMF Team",
+    "stats": [
+      {
+        "num": "12",
+        "gold": true,
+        "label": "Schools & programs"
+      },
+      {
+        "num": "100%",
+        "gold": false,
+        "label": "Tuition-free"
+      },
+      {
+        "num": "~20",
+        "gold": true,
+        "label": "Hrs / month · team"
+      },
+      {
+        "num": "Intl.",
+        "gold": false,
+        "label": "Cohorts worldwide"
+      }
+    ],
+    "teamEyebrow": "/ The CMF Team",
+    "teamHeading": "Practitioners and\nstrong students.",
+    "teamP1": "It is rare to find a team where practitioners — many with 10+ years of experience — work together to build and execute real-world projects within an educational initiative alongside exceptionally strong students.",
+    "teamP2": "Open roles include Product Owners on real quant, AI and Web3 projects; lecturers and TAs; mentors and founders building startups in our Business Incubator; managers across our online university (YNVRSTY) and EdTech labs.",
+    "infoHead": "CMF · at a glance",
+    "info": [
+      {
+        "k": "Tuition",
+        "v": "100% free"
+      },
+      {
+        "k": "Commitment",
+        "v": "~20 hrs / month"
+      },
+      {
+        "k": "Mentors",
+        "v": "10+ yrs experience"
+      },
+      {
+        "k": "Alumni at",
+        "v": "Google · GS · McKinsey"
+      },
+      {
+        "k": "Schools",
+        "v": "9 active · 3 upcoming"
+      },
+      {
+        "k": "Initiative",
+        "v": "YNVRSTY · CMF · AI Institute"
+      }
+    ],
+    "schoolsEyebrow": "/ The full curriculum",
+    "schoolsHeading": "Twelve schools.\nOne mission.",
+    "schoolsLede": "From quantitative finance to AI agents, from HFT to global macro — CMF spans the technical frontier of modern finance. Nine schools are running today; three more open in 2026.",
+    "schools": [
+      {
+        "name": "Adv. Quant Analytics",
+        "tag": "QUANT",
+        "status": "Active",
+        "href": "#/program/quant"
+      },
+      {
+        "name": "Options School",
+        "tag": "OPTIONS",
+        "status": "Active",
+        "href": "#/program/options"
+      },
+      {
+        "name": "HFT School",
+        "tag": "HFT",
+        "status": "Active",
+        "href": "#/program/hft"
+      },
+      {
+        "name": "AI School",
+        "tag": "AI",
+        "status": "Active",
+        "href": "#/program/ai"
+      },
+      {
+        "name": "FinTech School",
+        "tag": "FINTECH",
+        "status": "Active",
+        "href": "#/program/fintech"
+      },
+      {
+        "name": "Equity Research",
+        "tag": "EQUITY",
+        "status": "Active",
+        "href": "#/programs"
+      },
+      {
+        "name": "Web3 School",
+        "tag": "WEB3",
+        "status": "Active",
+        "href": "#/programs"
+      },
+      {
+        "name": "Data Science",
+        "tag": "DS",
+        "status": "Active",
+        "href": "#/programs"
+      },
+      {
+        "name": "Startup Incubator",
+        "tag": "INCUBATOR",
+        "status": "Active",
+        "href": "#/programs"
+      },
+      {
+        "name": "Mid-Freq. Strategies",
+        "tag": "MFT",
+        "status": "Upcoming",
+        "href": "#/programs"
+      },
+      {
+        "name": "Global Macro",
+        "tag": "MACRO",
+        "status": "Upcoming",
+        "href": "#/programs"
+      },
+      {
+        "name": "Superforecasting",
+        "tag": "FORECAST",
+        "status": "Upcoming",
+        "href": "#/programs"
+      }
+    ],
+    "participateEyebrow": "/ Ways to participate",
+    "participateHeading": "Join as a student.\nOr join the team.",
+    "participateLede": "We are always excited to meet ethical and technically strong people who want to participate in CMF.",
+    "participate": [
+      {
+        "icon": "ai",
+        "title": "Student",
+        "body": "Apply to a school — AI, Options, HFT, Quant, FinTech or the Startup Incubator. Build real projects with practitioner mentors.",
+        "link": "Apply to a school →",
+        "href": "#/apply"
+      },
+      {
+        "icon": "quant",
+        "title": "Product Owner",
+        "body": "Lead a small student team on a real project within Options School, HFT School or the Advanced Quantitative Analytics Program.",
+        "link": "Join the CMF Team →",
+        "href": "#/contact"
+      },
+      {
+        "icon": "incubator",
+        "title": "Lecturer / Mentor",
+        "body": "Design and deliver courses, workshops or interview-prep sessions. Share expertise and deepen your own understanding.",
+        "link": "Get in touch →",
+        "href": "#/contact"
+      }
+    ],
+    "ctaEyebrow": "Cohorts open year-round",
+    "ctaHeading": "Ready to join?\nThe CMF mission is open.",
+    "cta1": "Apply now",
+    "cta2": "Talk to admissions"
+  },
+  "contact": {
+    "eyebrow": "/ Contact",
+    "title": "Get in touch.",
+    "lede": "Questions about programs, partnerships or press? We respond within two business days.",
+    "items": [
+      {
+        "k": "Admissions",
+        "v": "admissions@cmf.edu",
+        "href": "mailto:admissions@cmf.edu"
+      },
+      {
+        "k": "Partnerships",
+        "v": "partners@cmf.edu",
+        "href": "mailto:partners@cmf.edu"
+      },
+      {
+        "k": "Office",
+        "v": "14 Rue de la Bourse\n75002 Paris, France",
+        "href": ""
+      }
+    ],
+    "formTitle": "Send us a message",
+    "sent": "Message sent.",
+    "sentBody": "We'll be in touch within two business days."
+  },
+  "apply": {
+    "eyebrow": "/ Apply · Cohort 2026",
+    "title": "Apply.",
+    "lede": "Three short steps. Full application reviewed within ten business days.",
+    "step0Title": "Choose your track.",
+    "step0Body": "You can change this later, or stack a second track at the next intake.",
+    "step1Title": "About you.",
+    "doneTitle": "Application received.",
+    "doneBody": "Thanks — you'll hear back from admissions within ten business days. Track your status by email."
+  }
+}

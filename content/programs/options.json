@@ -1,0 +1,113 @@
+{
+  "order": 1,
+  "id": "options",
+  "num": "02",
+  "tag": "OPTIONS SCHOOL",
+  "icon": "options",
+  "title": "Options School",
+  "desc": "A backtester, pricing & curve modeling, crypto options and vega hedging — an institutional options framework, applied end-to-end.",
+  "courses": [
+    "Course 1 · Backtester, Pricing & Curve Modeling",
+    "Course 2 · Crypto Options & Vega Hedging"
+  ],
+  "detailTag": "OPTIONS SCHOOL · TRACK 02",
+  "subtitle": "An institutional options framework, applied end-to-end",
+  "intro": "A core research & development cohort built around five interconnected components — a backtester, pricing & curve modeling, a crypto options module, a risk & vega-hedging layer, and an AI agent layer that augments the entire workflow.",
+  "meta": [
+    {
+      "k": "Duration",
+      "v": "12+ weeks"
+    },
+    {
+      "k": "Format",
+      "v": "Online · Weekly"
+    },
+    {
+      "k": "Cohort",
+      "v": "Cohort 2026"
+    },
+    {
+      "k": "Language",
+      "v": "English"
+    }
+  ],
+  "modules": [
+    {
+      "num": "01",
+      "title": "Options Backtester",
+      "tag": "3 WEEKS",
+      "desc": "A robust simulation engine for evaluating strategies under realistic market conditions — portfolio-level analysis, regime sensitivity and transaction-cost-aware validation."
+    },
+    {
+      "num": "02",
+      "title": "Pricing & Curve Modeling",
+      "tag": "3 WEEKS",
+      "desc": "Building and calibrating curves, surfaces and valuation models — especially for illiquid instruments where market data is sparse and standard assumptions break down."
+    },
+    {
+      "num": "03",
+      "title": "Crypto Options Module",
+      "tag": "2 WEEKS",
+      "desc": "The same institutional framework extended into crypto options — adapted for the specific liquidity, volatility and microstructure characteristics of digital asset markets."
+    },
+    {
+      "num": "04",
+      "title": "Portfolio Risk & Vega Hedging",
+      "tag": "2 WEEKS",
+      "desc": "A dedicated risk layer for monitoring and managing volatility exposure — vega hedging, surface dynamics and portfolio-level risk decomposition."
+    },
+    {
+      "num": "05",
+      "title": "AI Agent Layer",
+      "tag": "2 WEEKS",
+      "desc": "An intelligent orchestration layer that augments research and trading workflow — idea generation, monitoring, diagnostics and decision support across the platform."
+    }
+  ],
+  "outcomes": [
+    "Build and operate an institutional options backtester end-to-end",
+    "Calibrate pricing models for illiquid and exotic instruments",
+    "Extend the framework into crypto options with confidence",
+    "Manage vega and surface-dynamic risk at the portfolio level",
+    "Augment the workflow with custom AI agent orchestration"
+  ],
+  "audience": [
+    "Options traders and quants seeking a rigorous, integrated framework",
+    "Engineers building pricing, risk or backtesting infrastructure",
+    "Researchers moving from academic finance to the desk",
+    "Crypto-options practitioners formalising their stack"
+  ],
+  "instructors": [
+    {
+      "initials": "OL",
+      "name": "Options Practitioner",
+      "role": "Lead Instructor",
+      "bio": "10+ years pricing and trading vanilla & exotic options."
+    },
+    {
+      "initials": "CR",
+      "name": "Crypto-Options Lead",
+      "role": "Co-instructor",
+      "bio": "Builder of crypto options infrastructure across major venues."
+    },
+    {
+      "initials": "AA",
+      "name": "AI Agent Engineer",
+      "role": "TA Lead",
+      "bio": "Leads the AI orchestration layer across the Options School stack."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need prior options experience?",
+      "a": "A working knowledge of derivatives is recommended. The Advanced Quantitative Analytics track is a good prerequisite if you need the theory first."
+    },
+    {
+      "q": "What artifacts will I ship?",
+      "a": "A working backtester, a calibrated pricer for illiquid instruments, a crypto-options extension, a vega-hedging layer and an AI agent that orchestrates the whole research workflow."
+    },
+    {
+      "q": "Can I lead a project team?",
+      "a": "Yes — CMF Team participants can apply as Product Owners for small student teams within Options School, HFT School and the Advanced Quantitative Analytics Program."
+    }
+  ]
+}

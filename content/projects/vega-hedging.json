@@ -1,0 +1,95 @@
+{
+  "order": 3,
+  "id": "vega-hedging",
+  "title": "Portfolio Risk & Vega Hedging",
+  "cohort": "OPTIONS SCHOOL",
+  "variant": "heatmap",
+  "tint": "gold",
+  "tags": [
+    "Options",
+    "Risk"
+  ],
+  "desc": "A dedicated risk layer for monitoring and managing volatility exposure across the book — vega hedging, surface dynamics and portfolio-level risk decomposition.",
+  "detailCohort": "OPTIONS SCHOOL · RISK",
+  "summary": "A dedicated risk layer for monitoring and managing volatility exposure across the options book — vega hedging, surface dynamics and portfolio-level risk decomposition.",
+  "detailTags": [
+    "Options",
+    "Risk",
+    "Hedging"
+  ],
+  "duration": "2026 · Ongoing",
+  "team": [
+    {
+      "initials": "AH",
+      "name": "Project Lead",
+      "role": "Risk Lead"
+    },
+    {
+      "initials": "NV",
+      "name": "Quant",
+      "role": "Hedging Logic"
+    }
+  ],
+  "metrics": [
+    {
+      "v": "Vega",
+      "l": "Primary axis"
+    },
+    {
+      "v": "Surface-aware",
+      "l": "Bucketed hedging"
+    },
+    {
+      "v": "Portfolio",
+      "l": "Cross-book"
+    },
+    {
+      "v": "Live",
+      "l": "Continuously hedged"
+    }
+  ],
+  "problem": {
+    "title": "The problem",
+    "paras": [
+      "Delta-hedging an options book is well-understood. Vega hedging — and the higher-order surface-dynamic exposures behind it — is where most desks accumulate quiet, unmeasured risk."
+    ],
+    "chart": {
+      "variant": "heatmap",
+      "label": "Vega exposure by strike × tenor"
+    }
+  },
+  "approach": {
+    "title": "Our approach",
+    "paras": [
+      "A surface-aware vega bucketing scheme combined with a portfolio-level optimizer that proposes hedge trades minimising tracking error against a target risk profile. The optimizer is cost-aware and respects venue-specific liquidity constraints."
+    ],
+    "list": [
+      {
+        "t": "Bucketed vega",
+        "d": "Strike × tenor decomposition."
+      },
+      {
+        "t": "Surface dynamics",
+        "d": "Skew and term-structure sensitivities."
+      },
+      {
+        "t": "Cost-aware optimizer",
+        "d": "Minimises hedge tracking under cost limits."
+      }
+    ],
+    "chart": {
+      "variant": "curve",
+      "label": "Hedged vs unhedged PnL"
+    }
+  },
+  "results": {
+    "title": "Results & impact",
+    "paras": [
+      "Portfolio-level vega exposure is now continuously monitored and hedged within agreed tolerances. The layer is consumed by the backtester and the AI agent layer for live decision support."
+    ],
+    "chart": {
+      "variant": "bars",
+      "label": "Hedge cost by regime"
+    }
+  }
+}

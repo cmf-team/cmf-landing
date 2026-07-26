@@ -1,0 +1,100 @@
+{
+  "order": 4,
+  "id": "ai-agent-layer",
+  "title": "AI Agent Layer",
+  "cohort": "AI SCHOOL · OPTIONS",
+  "variant": "network",
+  "tint": "gold",
+  "tags": [
+    "AI",
+    "Agents"
+  ],
+  "desc": "An intelligent orchestration layer that augments the research and trading workflow — supporting idea generation, monitoring, diagnostics and decision support.",
+  "detailCohort": "AI SCHOOL × OPTIONS SCHOOL",
+  "summary": "An intelligent orchestration layer that augments the research and trading workflow — supporting idea generation, monitoring, diagnostics and decision support across the platform.",
+  "detailTags": [
+    "AI",
+    "Agents",
+    "Orchestration"
+  ],
+  "duration": "2026 · Ongoing",
+  "team": [
+    {
+      "initials": "TB",
+      "name": "AI Lead",
+      "role": "AI School Lead"
+    },
+    {
+      "initials": "IL",
+      "name": "Agent Eng.",
+      "role": "Orchestration"
+    },
+    {
+      "initials": "KW",
+      "name": "Eval",
+      "role": "Behavior Framework"
+    }
+  ],
+  "metrics": [
+    {
+      "v": "Multi-tool",
+      "l": "Integration engine"
+    },
+    {
+      "v": "Honest",
+      "l": "Eval-driven design"
+    },
+    {
+      "v": "Human-feeling",
+      "l": "No synthetic tone"
+    },
+    {
+      "v": "Production",
+      "l": "Reliable behaviour"
+    }
+  ],
+  "problem": {
+    "title": "The problem",
+    "paras": [
+      "Modern research desks have great tools but poor orchestration: dashboards, backtesters, risk layers and notebooks all live in separate windows. Manual context-switching is where real productivity gets lost."
+    ],
+    "chart": {
+      "variant": "network",
+      "label": "Workflow graph · agent reach"
+    }
+  },
+  "approach": {
+    "title": "Our approach",
+    "paras": [
+      "A lean stack — Python + one LLM API + Jupyter — and an integration engine that exposes the backtester, pricer, risk layer and market-data tools as agent-callable functions. Evaluation is honest by design: if the agent sounds synthetic, it fails."
+    ],
+    "list": [
+      {
+        "t": "Integration engine",
+        "d": "LLM ↔ research tools through typed function calls."
+      },
+      {
+        "t": "Behavioral framework",
+        "d": "Quantitative checks that catch AI slop."
+      },
+      {
+        "t": "Content transformation",
+        "d": "Dense diagnostics → short, useful messages."
+      }
+    ],
+    "chart": {
+      "variant": "curve",
+      "label": "Task success rate over iterations"
+    }
+  },
+  "results": {
+    "title": "Results & impact",
+    "paras": [
+      "The agent layer is now the connective tissue across CMF's research stack — proposing experiments, summarising risk reports, monitoring live PnL and surfacing diagnostics in plain language."
+    ],
+    "chart": {
+      "variant": "heatmap",
+      "label": "Agent performance by task type"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "hero": {
+    "eyebrow": "IMPACT-DRIVEN · INTERNATIONAL · TUITION-FREE",
+    "headline": "Center of Mathematical Finance",
+    "subhead": "From financial intuition to rigorous quantitative modeling",
+    "paragraph": "CMF is an impact-driven international educational initiative for people with high ethical values and strong technical skills. Across our schools in Quantitative Finance, HFT, Options, AI, FinTech and Web3, we support talented individuals — especially from developing countries — to start meaningful careers and contribute to real-world research.",
+    "cta1": "Explore Programs",
+    "cta2": "View Portfolio"
+  },
+  "about": {
+    "eyebrow": "/ 01 — Our approach",
+    "heading": "Ethics, skill and\nreal-world impact.",
+    "lede": "A community where practitioners with 10+ years of experience build and execute real projects alongside exceptionally strong students. The only investment we ask for is your time and commitment.",
+    "values": [
+      {
+        "icon": "rigor",
+        "title": "Rigorous",
+        "body": "From financial intuition to rigorous quantitative modeling — stochastic calculus, numerical methods and the depth required to read papers, not just recite them."
+      },
+      {
+        "icon": "practice",
+        "title": "Builder-first",
+        "body": "We learn by building. Backtesters, pricing engines, AI agents and live trading systems — every program ships real artifacts on real data."
+      },
+      {
+        "icon": "intuition",
+        "title": "Impact-driven",
+        "body": "Tuition-free programs for talented people across the world — especially from developing countries — unlocking meaningful careers in democratic societies."
+      }
+    ]
+  },
+  "programsSec": {
+    "eyebrow": "/ 02 — Schools",
+    "heading": "Programs open\nfor registration.",
+    "lede": "Four flagship schools, each delivered as two intensive courses. FinTech, Equity Research and the AI & Web3 Startup Incubator open separately — see all programs for the full list.",
+    "allLabel": "View all schools"
+  },
+  "portfolioSec": {
+    "eyebrow": "/ 03 — Portfolio",
+    "heading": "Projects by our\nteam and cohorts.",
+    "lede": "Capstone work and ongoing research across CMF schools. Every project ships with documentation, code and a written defense — built collaboratively by students and practitioner mentors."
+  },
+  "stats": [
+    {
+      "num": "07",
+      "gold": true,
+      "label": "Schools & programs"
+    },
+    {
+      "num": "10+ yrs",
+      "gold": false,
+      "label": "Avg. mentor experience"
+    },
+    {
+      "num": "Google · GS",
+      "gold": false,
+      "label": "Where alumni land"
+    },
+    {
+      "num": "100%",
+      "gold": true,
+      "label": "Tuition-free"
+    }
+  ],
+  "testimonialsSec": {
+    "eyebrow": "/ 04 — Voices",
+    "heading": "From our alumni\nand partners.",
+    "items": [
+      {
+        "quote": "It is rare to find a team where practitioners with 10+ years of experience work together to build real-world projects within an educational initiative — alongside exceptionally strong students.",
+        "initials": "EK",
+        "name": "Elena Kovač",
+        "meta": "Options School · Mentor"
+      },
+      {
+        "quote": "CMF rebuilt the way I read papers. Six months in I was pricing exotic barriers on the desk — and actually understanding what the Greeks were telling me.",
+        "initials": "RT",
+        "name": "Ravi Thakkar",
+        "meta": "Adv. Quant Analytics · Alumnus"
+      },
+      {
+        "quote": "Lean stack. Sharp problems. We built AI agents that actually shipped — and the evaluation criteria forced honesty about what was real and what was AI slop.",
+        "initials": "MS",
+        "name": "Maya Soriano",
+        "meta": "AI School · Cohort 01"
+      }
+    ]
+  },
+  "partners": [
+    "GOOGLE",
+    "GOLDMAN SACHS",
+    "MCKINSEY",
+    "YNVRSTY",
+    "AI INSTITUTE",
+    "FINTECH SCHOOL"
+  ]
+}

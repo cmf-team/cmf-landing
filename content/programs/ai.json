@@ -1,0 +1,122 @@
+{
+  "order": 0,
+  "id": "ai",
+  "num": "01",
+  "tag": "AI SCHOOL",
+  "icon": "ai",
+  "title": "AI School @ AI Institute",
+  "desc": "Build AI agents, integration engines and AI-native products. Python + one LLM API + Jupyter — signal over infrastructure.",
+  "courses": [
+    "Course 1 · AI Agents & Integration Engines",
+    "Course 2 · Content Transformation & Product Design"
+  ],
+  "detailTag": "AI SCHOOL · TRACK 01",
+  "subtitle": "AI agents, integration engines and AI-native product design",
+  "intro": "A builder-focused program inspired by the \"learn by building\" approach. The frontier has moved from model improvements to AI agents, integration engines and intelligent systems that work inside real products and workflows — and that is what we build.",
+  "meta": [
+    {
+      "k": "Duration",
+      "v": "Until end of July"
+    },
+    {
+      "k": "Format",
+      "v": "Online · Saturdays"
+    },
+    {
+      "k": "Cohort",
+      "v": "Cohort 01 · 2026"
+    },
+    {
+      "k": "Language",
+      "v": "English"
+    }
+  ],
+  "modules": [
+    {
+      "num": "01",
+      "title": "Development of Integration Engine",
+      "tag": "1 WEEK",
+      "desc": "The plumbing that connects LLMs to real tools and data sources."
+    },
+    {
+      "num": "02",
+      "title": "Content Transformation",
+      "tag": "2 WEEKS",
+      "desc": "Turn dry, technical input into short, useful, human-sounding messages — the cohort's flagship project."
+    },
+    {
+      "num": "03",
+      "title": "Metrics & Behavioral Framework",
+      "tag": "1 WEEK",
+      "desc": "How to evaluate an agent. If it sounds synthetic, it fails — quantify that signal."
+    },
+    {
+      "num": "04",
+      "title": "AI-Native Product Design",
+      "tag": "2 WEEKS",
+      "desc": "Designing products that feel native to the AI substrate, not bolted-on chatbots."
+    },
+    {
+      "num": "05",
+      "title": "Prompt Engineering",
+      "tag": "1 WEEK",
+      "desc": "System and user prompts that hold up under production stress."
+    },
+    {
+      "num": "06",
+      "title": "AI Product Management & Development",
+      "tag": "2 WEEKS",
+      "desc": "The end-to-end lifecycle: scoping, building, evaluating, iterating."
+    },
+    {
+      "num": "07",
+      "title": "Interview Preparation",
+      "tag": "1 WEEK",
+      "desc": "Mock interviews, system design and offer negotiation for AI roles."
+    }
+  ],
+  "outcomes": [
+    "Ship working AI agents end-to-end with a minimal stack",
+    "Design evaluation systems that catch synthetic output",
+    "Engineer prompts that behave consistently in production",
+    "Combine your work with the AI & Web3 Startup Incubator"
+  ],
+  "audience": [
+    "AI engineers moving from research to product",
+    "Product builders adding LLM capability to real workflows",
+    "Founders and CTOs of early-stage AI startups",
+    "Strong technical people who want to ship, not just lecture"
+  ],
+  "instructors": [
+    {
+      "initials": "TB",
+      "name": "Timur Bakibayev, PhD",
+      "role": "Lead Instructor",
+      "bio": "PhD in Computer Science (Heidelberg University). Founder of a stealth EdTech startup."
+    },
+    {
+      "initials": "AI",
+      "name": "AI Practitioner",
+      "role": "Co-instructor",
+      "bio": "Builder and product lead with shipped AI-native systems."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What stack will we use?",
+      "a": "Intentionally minimal: Python + one LLM API (Claude / OpenAI / Gemini — your choice) with Jupyter as the execution layer. No infrastructure abstraction; just building and iterating."
+    },
+    {
+      "q": "What is the entrance exam?",
+      "a": "Build a Content Transformation Agent that turns a dry technical AI update into a short, human-sounding message that makes the reader want to reply \"Show me!\". You submit architecture, prompts, a real example and a short screencast."
+    },
+    {
+      "q": "Can I combine this with the Startup Incubator?",
+      "a": "Yes — AI School participants can also take part in the AI & Web3 Startup Incubator and turn their work into a real product."
+    },
+    {
+      "q": "Will tokens be provided?",
+      "a": "For the strongest submissions, API tokens are provided for the selected LLM providers."
+    }
+  ]
+}

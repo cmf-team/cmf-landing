@@ -1,0 +1,106 @@
+{
+  "order": 1,
+  "id": "pricing-curve",
+  "title": "Pricing & Curve Modeling",
+  "cohort": "OPTIONS SCHOOL",
+  "variant": "surface",
+  "tint": "gold",
+  "tags": [
+    "Options",
+    "Pricing"
+  ],
+  "desc": "Building and calibrating curves, surfaces and valuation models — focused on illiquid instruments where market data is sparse and standard assumptions break down.",
+  "detailCohort": "OPTIONS SCHOOL · PRICING",
+  "summary": "A specialized pricing track focused on building and calibrating curves, surfaces and valuation models — especially for illiquid instruments where market data is sparse and standard assumptions break down.",
+  "detailTags": [
+    "Options",
+    "Pricing",
+    "Calibration"
+  ],
+  "duration": "2026 · Ongoing",
+  "team": [
+    {
+      "initials": "SD",
+      "name": "Project Lead",
+      "role": "Lead Quant"
+    },
+    {
+      "initials": "KP",
+      "name": "Modeling",
+      "role": "Surface Construction"
+    },
+    {
+      "initials": "BJ",
+      "name": "Infrastructure",
+      "role": "Calibration Engine"
+    }
+  ],
+  "metrics": [
+    {
+      "v": "Arb-free",
+      "l": "Surface construction"
+    },
+    {
+      "v": "Illiquid",
+      "l": "Specialized focus"
+    },
+    {
+      "v": "Multi-asset",
+      "l": "Cross-product"
+    },
+    {
+      "v": "Calibrated",
+      "l": "On real quotes"
+    }
+  ],
+  "problem": {
+    "title": "The problem",
+    "paras": [
+      "Standard pricing pipelines assume liquid, two-sided quotes across a dense grid. Reality is sparser — wide spreads, stale prices, missing tenors and wing-only quotes that defeat naive calibration.",
+      "Downstream consumers — hedge engines, exotic pricers and risk dashboards — need a smooth, stable, arbitrage-free surface even when the input quote stream is messy."
+    ],
+    "chart": {
+      "variant": "surface",
+      "label": "Implied vol surface · illiquid instrument"
+    }
+  },
+  "approach": {
+    "title": "Our approach",
+    "paras": [
+      "We layer an arbitrage-free parameterization (SSVI-style) over a constrained per-slice refinement, with bespoke quote cleaning and weighting. The wings of illiquid surfaces are stabilized using cross-product invariants — put-call parity, calendar relationships and synthetic far-strike anchors.",
+      "The calibration runs in milliseconds per slice with a homotopy warm-start from the previous tick, making it suitable for both research notebooks and production hedge engines."
+    ],
+    "list": [
+      {
+        "t": "Arbitrage-free skeleton",
+        "d": "No-arb-by-construction parameterization across tenors."
+      },
+      {
+        "t": "Sparse-quote handling",
+        "d": "Synthetic anchors when wings are unobservable."
+      },
+      {
+        "t": "Cross-product invariants",
+        "d": "Parity and calendar conditions for stability."
+      },
+      {
+        "t": "Warm-started solver",
+        "d": "Custom Jacobians, homotopy in calibration time."
+      }
+    ],
+    "chart": {
+      "variant": "curve",
+      "label": "Slice fit · 30-day expiry · log-moneyness"
+    }
+  },
+  "results": {
+    "title": "Results & impact",
+    "paras": [
+      "Stable, arbitrage-free surfaces produced even on illiquid instruments where naive SVI fails. The framework is consumed by the backtester, the vega-hedging risk layer and the crypto options module — making it the pricing backbone of Options School."
+    ],
+    "chart": {
+      "variant": "heatmap",
+      "label": "Calibration residuals · strikes × tenors"
+    }
+  }
+}

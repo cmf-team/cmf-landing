@@ -1,0 +1,107 @@
+{
+  "order": 2,
+  "id": "hft",
+  "num": "03",
+  "tag": "HFT SCHOOL",
+  "icon": "hft",
+  "title": "HFT School",
+  "desc": "High-frequency market making and execution research — microstructure, latency-aware design and live-market validation.",
+  "courses": [
+    "Course 1 · Market Microstructure & Strategy Design",
+    "Course 2 · Execution Engineering & Validation"
+  ],
+  "detailTag": "HFT SCHOOL · TRACK 03",
+  "subtitle": "High-frequency market making, microstructure and execution",
+  "intro": "A focused research track on high-frequency trading — market microstructure, latency-aware system design, market-making strategy, and the execution research that makes systematic trading work at the millisecond scale.",
+  "meta": [
+    {
+      "k": "Duration",
+      "v": "12 weeks"
+    },
+    {
+      "k": "Format",
+      "v": "Online · Weekly"
+    },
+    {
+      "k": "Cohort",
+      "v": "Cohort 2026"
+    },
+    {
+      "k": "Language",
+      "v": "English"
+    }
+  ],
+  "modules": [
+    {
+      "num": "01",
+      "title": "Market Microstructure",
+      "tag": "2 WEEKS",
+      "desc": "Limit order books, queue dynamics, adverse selection — the underlying mechanics of every HFT strategy."
+    },
+    {
+      "num": "02",
+      "title": "Market Making Strategy",
+      "tag": "2 WEEKS",
+      "desc": "Quoting policies, inventory management and adverse-selection control."
+    },
+    {
+      "num": "03",
+      "title": "Execution Research",
+      "tag": "2 WEEKS",
+      "desc": "Order routing, child slicing, transaction-cost analysis and impact modeling."
+    },
+    {
+      "num": "04",
+      "title": "Latency-aware System Design",
+      "tag": "2 WEEKS",
+      "desc": "The engineering that turns theoretical edge into realized PnL — kernel bypass, lockless queues, low-latency networking."
+    },
+    {
+      "num": "05",
+      "title": "Machine Learning in HFT",
+      "tag": "2 WEEKS",
+      "desc": "Where ML works at high frequency, where it doesn't, and how to evaluate it honestly."
+    },
+    {
+      "num": "06",
+      "title": "Capstone",
+      "tag": "2 WEEKS",
+      "desc": "A market-making research artifact validated on live exchange data with full TCA."
+    }
+  ],
+  "outcomes": [
+    "Reason quantitatively about queue position and adverse selection",
+    "Build market-making strategy with inventory and risk controls",
+    "Design latency-aware systems with realistic engineering trade-offs",
+    "Evaluate execution research with honest, leak-free methodology"
+  ],
+  "audience": [
+    "Quants moving into high-frequency systematic strategies",
+    "Engineers building exchange-facing trading systems",
+    "Researchers interested in market microstructure"
+  ],
+  "instructors": [
+    {
+      "initials": "HF",
+      "name": "HFT Practitioner",
+      "role": "Lead Instructor",
+      "bio": "10+ years in low-latency market making at a top-tier firm."
+    },
+    {
+      "initials": "EX",
+      "name": "Execution Researcher",
+      "role": "Co-instructor",
+      "bio": "Specialist in execution research and TCA."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need C++ on day one?",
+      "a": "No — Python is the primary research language. C++ is introduced for latency-critical components when appropriate."
+    },
+    {
+      "q": "Can CMF Team participants lead an HFT project?",
+      "a": "Yes — Product Owner roles for HFT School project teams are open through the CMF Team application."
+    }
+  ]
+}

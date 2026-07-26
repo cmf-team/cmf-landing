@@ -1,80 +1,195 @@
 #!/usr/bin/env node
-// Generates the CMS field schema from content.json.
+// Generates admin/config.yml from the files under content/.
 //
-// Hand-writing ~250 lines of YAML against a 42KB nested object invites silent
-// mismatches: a field named wrong in the schema simply never appears in the
-// editor, and a field omitted is silently dropped on save. Deriving it from the
-// data guarantees the schema and the content agree.
+// Derived rather than hand-written: a misnamed field in a CMS schema does not
+// error, it silently drops that content on save. Generating guarantees the
+// schema and the data agree.
 //
-// Re-run after changing content.json's *shape* (not its values):
-//   node scripts/gen-cms-schema.js > admin/fields.yml
+// Regenerate after changing the *shape* of content (new keys, not new values):
+//   node scripts/gen-cms-schema.js > admin/config.yml
 
 const fs = require('fs');
-const content = JSON.parse(fs.readFileSync('content.json', 'utf8'));
+const path = require('path');
+
+const read = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
+
+// Mechanical labels like "Sub" or "Programs Sec" read badly. Override the ones
+// worth naming properly; everything else falls back to title-casing the key.
+const LABELS = {
+  abbr: 'Abbreviation', sub: 'Tagline', desc: 'Description', href: 'Link',
+  num: 'Number', gold: 'Highlight', intro: 'Introduction', faqs: 'FAQs',
+  cta: 'Call to action', eyebrow: 'Eyebrow text', blurb: 'Short description',
+  cols: 'Footer columns', head: 'Heading', programsSec: 'Programs section',
+  portfolioSec: 'Portfolio section', testimonialsSec: 'Testimonials section',
+  detailTag: 'Detail tag', detailCohort: 'Detail cohort', detailTags: 'Detail tags',
+  applyLabel: 'Apply button label', copyright: 'Copyright line',
+  meta: 'Meta facts', modules: 'Modules', outcomes: 'Outcomes',
+  audience: 'Who it is for', instructors: 'Instructors', metrics: 'Metrics',
+  tint: 'Colour tint', variant: 'Card variant', id: 'ID (used in the URL)',
+};
+
+const HINTS = {
+  id: 'Appears in the page URL. Changing it breaks existing links.',
+  order: 'Lower numbers appear first on the site.',
+  icon: 'Short emoji or symbol shown on the card.',
+};
 
 const LONG = /^(desc|intro|summary|blurb|body|text|answer|problem|approach|copy|sub)$/i;
 const MULTILINE_MIN = 90;
 
 const label = (k) =>
-  k.replace(/([a-z0-9])([A-Z])/g, '$1 $2')
-   .replace(/^./, (c) => c.toUpperCase())
-   .replace(/\bSec\b/, 'section');
+  LABELS[k] ||
+  k.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/^./, (c) => c.toUpperCase());
 
-const indent = (n) => '  '.repeat(n);
+const pad = (n) => '  '.repeat(n);
 
 function field(key, value, depth) {
-  const pad = indent(depth);
-  const head = `${pad}- name: ${key}\n${pad}  label: ${JSON.stringify(label(key))}`;
+  const p = pad(depth);
+  const lines = [`${p}- name: ${key}`, `${p}  label: ${JSON.stringify(label(key))}`];
+  if (HINTS[key]) lines.push(`${p}  hint: ${JSON.stringify(HINTS[key])}`);
+  const head = lines.join('\n');
 
   if (Array.isArray(value)) {
-    if (value.length === 0) {
-      return `${head}\n${pad}  widget: list`;
-    }
+    if (!value.length) return `${head}\n${p}  widget: list\n${p}  required: false`;
     const sample = value[0];
     if (sample !== null && typeof sample === 'object') {
-      // Merge keys across all items so optional fields aren't lost.
       const keys = [...new Set(value.flatMap((v) => Object.keys(v || {})))];
       const merged = {};
       for (const k of keys) merged[k] = value.find((v) => v && v[k] !== undefined)?.[k] ?? '';
-      const summary = keys.includes('title') ? '{{fields.title}}'
-                    : keys.includes('label') ? '{{fields.label}}'
-                    : keys.includes('head')  ? '{{fields.head}}'
-                    : keys.includes('num')   ? '{{fields.num}}'
-                    : null;
+      const sumKey = ['title', 'label', 'head', 'q', 'name', 'num'].find((k) => keys.includes(k));
       return [
         head,
-        `${pad}  widget: list`,
-        summary ? `${pad}  summary: ${JSON.stringify(summary)}` : null,
-        `${pad}  collapsed: true`,
-        `${pad}  fields:`,
+        `${p}  widget: list`,
+        sumKey ? `${p}  summary: "{{fields.${sumKey}}}"` : null,
+        `${p}  collapsed: true`,
+        `${p}  required: false`,
+        `${p}  fields:`,
         keys.map((k) => field(k, merged[k], depth + 2)).join('\n'),
       ].filter(Boolean).join('\n');
     }
-    // list of primitives
-    return `${head}\n${pad}  widget: list\n${pad}  field:\n${pad}    - name: value\n${pad}      label: Value\n${pad}      widget: string`;
+    // Plain string list — Sveltia renders these as draggable chips.
+    return `${head}\n${p}  widget: list\n${p}  required: false`;
   }
 
   if (value !== null && typeof value === 'object') {
     return [
       head,
-      `${pad}  widget: object`,
-      `${pad}  collapsed: true`,
-      `${pad}  fields:`,
+      `${p}  widget: object`,
+      `${p}  collapsed: true`,
+      `${p}  required: false`,
+      `${p}  fields:`,
       Object.entries(value).map(([k, v]) => field(k, v, depth + 2)).join('\n'),
     ].join('\n');
   }
 
-  if (typeof value === 'number') return `${head}\n${pad}  widget: number\n${pad}  required: false`;
-  if (typeof value === 'boolean') return `${head}\n${pad}  widget: boolean\n${pad}  required: false`;
+  if (typeof value === 'number') return `${head}\n${p}  widget: number\n${p}  required: false`;
+  if (typeof value === 'boolean') return `${head}\n${p}  widget: boolean\n${p}  required: false`;
 
   const s = String(value ?? '');
   const widget = LONG.test(key) || s.length > MULTILINE_MIN ? 'text' : 'string';
-  return `${head}\n${pad}  widget: ${widget}\n${pad}  required: false`;
+  return `${head}\n${p}  widget: ${widget}\n${p}  required: false`;
 }
 
-// depth 5 == 10 spaces, which is where `fields:` sits under a file collection
-const out = Object.entries(content)
-  .map(([k, v]) => field(k, v, 5))
-  .join('\n');
+const fieldsFor = (obj, depth) =>
+  Object.entries(obj).map(([k, v]) => field(k, v, depth)).join('\n');
 
-process.stdout.write(out + '\n');
+// ---------------------------------------------------------------------------
+
+const home = read('content/home.json');
+const pages = read('content/pages.json');
+const settings = read('content/settings.json');
+const sampleProgram = read(fs.readdirSync('content/programs').filter(f => f.endsWith('.json')).map(f => path.join('content/programs', f))[0]);
+const sampleProject = read(fs.readdirSync('content/projects').filter(f => f.endsWith('.json')).map(f => path.join('content/projects', f))[0]);
+
+const out = `# GENERATED by scripts/gen-cms-schema.js — do not edit by hand.
+# Regenerate after changing the shape of content/:
+#   node scripts/gen-cms-schema.js > admin/config.yml
+#
+# base_url points at the OAuth broker Worker (see docs/cms-setup.md). It exists
+# only to exchange the OAuth code for a token, because GitHub's token endpoint
+# refuses browser requests. No credential is ever shipped to the browser.
+backend:
+  name: github
+  repo: cmf-team/cmf-landing
+  branch: master
+  base_url: __OAUTH_BROKER_URL__
+  auth_endpoint: auth
+  commit_messages:
+    create: 'content: add {{collection}} "{{slug}}"'
+    update: 'content: update {{collection}} "{{slug}}"'
+    delete: 'content: remove {{collection}} "{{slug}}"'
+    uploadMedia: 'content: upload {{path}}'
+    deleteMedia: 'content: remove {{path}}'
+
+# Every change opens a pull request rather than committing to master.
+publish_mode: editorial_workflow
+
+# Must live under assets/ — the only directory build.sh copies into dist/.
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+site_url: https://ynvrsty.com
+display_url: https://ynvrsty.com
+
+collections:
+  - name: home
+    label: Home page
+    icon: home
+    files:
+      - name: home
+        label: Home page
+        file: content/home.json
+        format: json
+        fields:
+${fieldsFor(home, 5)}
+
+  - name: programs
+    label: Programs
+    label_singular: Program
+    folder: content/programs
+    extension: json
+    format: json
+    create: true
+    slug: '{{fields.id}}'
+    identifier_field: title
+    summary: '{{title}}'
+    sortable_fields: ['order', 'title']
+    fields:
+${fieldsFor(sampleProgram, 3)}
+
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: content/projects
+    extension: json
+    format: json
+    create: true
+    slug: '{{fields.id}}'
+    identifier_field: title
+    summary: '{{title}}'
+    sortable_fields: ['order', 'title']
+    fields:
+${fieldsFor(sampleProject, 3)}
+
+  - name: pages
+    label: Pages
+    files:
+      - name: pages
+        label: All pages
+        file: content/pages.json
+        format: json
+        fields:
+${fieldsFor(pages, 5)}
+
+  - name: settings
+    label: Site settings
+    files:
+      - name: settings
+        label: Brand, navigation & footer
+        file: content/settings.json
+        format: json
+        fields:
+${fieldsFor(settings, 5)}
+`;
+
+process.stdout.write(out);

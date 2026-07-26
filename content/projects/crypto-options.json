@@ -1,0 +1,101 @@
+{
+  "order": 2,
+  "id": "crypto-options",
+  "title": "Crypto Options Module",
+  "cohort": "OPTIONS SCHOOL",
+  "variant": "orderbook",
+  "tint": "gold",
+  "tags": [
+    "Options",
+    "Crypto"
+  ],
+  "desc": "An extension of the institutional framework into crypto options — adapted for the liquidity, volatility and microstructure of digital asset markets.",
+  "detailCohort": "OPTIONS SCHOOL · CRYPTO",
+  "summary": "An extension of the same institutional framework into crypto options — adapted for the specific liquidity, volatility and microstructure characteristics of digital asset markets.",
+  "detailTags": [
+    "Options",
+    "Crypto",
+    "DeFi"
+  ],
+  "duration": "2026 · Ongoing",
+  "team": [
+    {
+      "initials": "ZH",
+      "name": "Project Lead",
+      "role": "Crypto Lead"
+    },
+    {
+      "initials": "OA",
+      "name": "On-chain Eng.",
+      "role": "Venue Integration"
+    },
+    {
+      "initials": "EN",
+      "name": "Risk",
+      "role": "Adapted Hedging"
+    }
+  ],
+  "metrics": [
+    {
+      "v": "Multi-venue",
+      "l": "Centralised + on-chain"
+    },
+    {
+      "v": "Higher vol",
+      "l": "Regime-aware"
+    },
+    {
+      "v": "24/7",
+      "l": "Continuous markets"
+    },
+    {
+      "v": "Adapted",
+      "l": "Microstructure-aware"
+    }
+  ],
+  "problem": {
+    "title": "The problem",
+    "paras": [
+      "Crypto options inherit the institutional toolkit but operate under very different market conditions — wider spreads, jumpier underlyings, 24/7 trading, fragmented venues and a mix of centralized and on-chain liquidity.",
+      "Naively porting equity-options infrastructure produces strategies that look profitable on paper but break under crypto regime shifts and execution constraints."
+    ],
+    "chart": {
+      "variant": "orderbook",
+      "label": "Crypto options · order book depth"
+    }
+  },
+  "approach": {
+    "title": "Our approach",
+    "paras": [
+      "We re-use the same pricing, backtesting and risk infrastructure but adapt the calibration priors, regime overlays and execution layer to crypto realities — fatter tails in the implied distribution, 24/7 funding and the cross-venue dynamics of CEX and DEX liquidity."
+    ],
+    "list": [
+      {
+        "t": "Crypto-tuned priors",
+        "d": "Fatter-tail-aware calibration for surface construction."
+      },
+      {
+        "t": "CEX + DEX integration",
+        "d": "Unified view across centralised and on-chain venues."
+      },
+      {
+        "t": "24/7 portfolio risk",
+        "d": "Continuous-market risk and funding accounting."
+      }
+    ],
+    "chart": {
+      "variant": "curve",
+      "label": "Realized vs implied vol · BTC options"
+    }
+  },
+  "results": {
+    "title": "Results & impact",
+    "paras": [
+      "A working crypto-options stack sharing the same backtester, pricing engine and risk layer as the institutional Options School framework — closing the gap between traditional and digital-asset options research."
+    ],
+    "chart": {
+      "variant": "network",
+      "label": "Cross-venue liquidity graph"
+    }
+  }
+}
