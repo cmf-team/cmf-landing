@@ -269,23 +269,67 @@ domain_kind() {
 }
 
 domain_setup() {
-  [ -n "$CUSTOM_DOMAIN" ] || die "CUSTOM_DOMAIN is empty — set it in deploy.conf first"
-  local kind; kind="$(domain_kind "$CUSTOM_DOMAIN")"
+  local domain="${1:-$CUSTOM_DOMAIN}"
+  [ -n "$domain" ] || die "no domain given — pass one (--domain-setup example.com) or set CUSTOM_DOMAIN"
+  local kind; kind="$(domain_kind "$domain")"
 
-  printf "\n%sConfiguring%s %s%s%s (detected: %s)\n" "$B" "$X" "$C" "$CUSTOM_DOMAIN" "$X" "$kind"
+  printf "\n%sConfiguring%s %s%s%s (detected: %s)\n" "$B" "$X" "$C" "$domain" "$X" "$kind"
 
-  gh api -X PUT "repos/$REPO/pages" -f "cname=$CUSTOM_DOMAIN" >/dev/null 2>&1 \
+  # DNS must point at GitHub BEFORE the custom domain is registered. Once it
+  # is, GitHub 301s github.io -> the custom domain, so activating early takes
+  # the site offline until DNS propagates. Check first, activate second.
+  local resolved pointing=0
+  resolved="$(dig +short "$domain" A 2>/dev/null | tr '\n' ' ')"
+  for ip in $GH_PAGES_IPS; do
+    case " $resolved " in *" $ip "*) pointing=1 ;; esac
+  done
+
+  if [ "$pointing" = "0" ]; then
+    warn "DNS is not pointing at GitHub Pages yet"
+    [ -n "${resolved// /}" ] && info "currently resolves to: $resolved"
+    printf "\n%sStep 1 — add these DNS records at your registrar:%s\n\n" "$B" "$X"
+    if [ "$kind" = "apex" ]; then
+      for ip in $GH_PAGES_IPS;  do printf "    A      @      %s\n" "$ip"; done
+      for ip in $GH_PAGES_IPV6; do printf "    AAAA   @      %s\n" "$ip"; done
+      printf "\n  %sOptional, so www also works:%s\n" "$DIM" "$X"
+      printf "    CNAME  www    %s.github.io\n" "$OWNER"
+    else
+      printf "    CNAME  %-6s %s.github.io\n" "${domain%%.*}" "$OWNER"
+    fi
+    cat <<EOF
+
+  ${Y}Leave any MX records alone${X} — they carry email and are unaffected by
+  the records above. (This is also why an apex uses A records: a CNAME at the
+  apex would collide with MX.)
+
+  ${B}Step 2${X} — once the records are live, re-run:
+      ./deploy.sh --domain-setup $domain
+
+  ${DIM}Nothing has been changed yet. The site stays on
+  $SITE_URL until DNS is ready.${X}
+EOF
+    return 0
+  fi
+
+  ok "DNS points at GitHub Pages ($resolved)"
+
+  if ! grep -q "^CUSTOM_DOMAIN=\"$domain\"" deploy.conf 2>/dev/null; then
+    sed -i.bak "s|^CUSTOM_DOMAIN=.*|CUSTOM_DOMAIN=\"$domain\"|" deploy.conf && rm -f deploy.conf.bak
+    ok "deploy.conf updated"
+  fi
+
+  gh api -X PUT "repos/$REPO/pages" -f "cname=$domain" >/dev/null 2>&1 \
     && ok "GitHub Pages custom domain set" \
     || warn "could not set via API — set it in Settings > Pages manually"
 
-  printf "\n%sAdd these DNS records at your registrar:%s\n\n" "$B" "$X"
+  printf "\n%sDNS records (for reference):%s\n\n" "$B" "$X"
   if [ "$kind" = "apex" ]; then
     for ip in $GH_PAGES_IPS;  do printf "    A      @      %s\n" "$ip"; done
     for ip in $GH_PAGES_IPV6; do printf "    AAAA   @      %s\n" "$ip"; done
     printf "\n  %sOptional, so www also works:%s\n" "$DIM" "$X"
     printf "    CNAME  www    %s.github.io\n" "$OWNER"
   else
-    printf "    CNAME  %-6s %s.github.io\n" "${CUSTOM_DOMAIN%%.*}" "$OWNER"
+    printf "    CNAME  %-6s %s.github.io\n" "${domain%%.*}" "$OWNER"
   fi
 
   cat <<EOF
@@ -354,7 +398,12 @@ while [ $# -gt 0 ]; do
         ""|-*) ROLLBACK="HEAD"; shift ;;
         *)     ROLLBACK="$2";   shift 2 ;;
       esac ;;
-    --domain-setup)   domain_setup; exit 0 ;;
+    --domain-setup)
+      case "${2:-}" in
+        ""|-*) domain_setup ;;
+        *)     domain_setup "$2" ;;
+      esac
+      exit 0 ;;
     --domain-status)  domain_status; exit 0 ;;
     -h|--help)        usage; exit 0 ;;
     *)                die "unknown option: $1  (try --help)" ;;
