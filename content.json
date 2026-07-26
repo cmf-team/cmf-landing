@@ -8,12 +8,12 @@
     "applyLabel": "Apply",
     "links": [
       {
-        "label": "Programs",
-        "href": "#/programs"
-      },
-      {
         "label": "Home",
         "href": "#/"
+      },
+      {
+        "label": "Programs",
+        "href": "#/programs"
       },
       {
         "label": "Portfolio",
@@ -32,7 +32,7 @@
   "home": {
     "hero": {
       "eyebrow": "IMPACT-DRIVEN · INTERNATIONAL · TUITION-FREE",
-      "headline": "Center of\nMathematical\nFinance",
+      "headline": "Center of Mathematical Finance",
       "subhead": "From financial intuition to rigorous quantitative modeling",
       "paragraph": "CMF is an impact-driven international educational initiative for people with high ethical values and strong technical skills. Across our schools in Quantitative Finance, HFT, Options, AI, FinTech and Web3, we support talented individuals — especially from developing countries — to start meaningful careers and contribute to real-world research.",
       "cta1": "Explore Programs",
