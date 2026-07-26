@@ -6,6 +6,14 @@
   <title>CMF — Center of Mathematical Finance</title>
   <link rel="icon" type="image/png" href="assets/cmf-logo-white.png" />
 
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <!-- build:csp -->
+  <!-- Dev policy: permissive because Babel transpiles in-browser ('unsafe-eval')
+       and React is fetched from unpkg. build.sh replaces this block with a
+       strict production policy that allows neither. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'" />
+  <!-- /build:csp -->
+
   <!-- Fonts: Space Grotesk (display), Geist (body), JetBrains Mono (mono) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -152,11 +152,28 @@ CSS_FILE="$(cd "$OUT" && ls styles.*.css)"
 # ---------------------------------------------------------------------------
 # 5. Generate dist/index.html by swapping the marked blocks.
 # ---------------------------------------------------------------------------
-awk -v js="$JS_FILE" -v css="$CSS_FILE" '
+# Production CSP: no 'unsafe-eval' and no unpkg, since nothing is transpiled or
+# fetched at runtime any more. 'unsafe-inline' stays in style-src only because
+# the components use style={{...}}, which React renders as inline attributes.
+# Note: frame-ancestors is deliberately absent — browsers ignore it in a meta
+# tag, and GitHub Pages cannot set real HTTP headers.
+CSP="default-src 'self'; \
+script-src 'self' https://cdn.jsdelivr.net; \
+style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; \
+font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; \
+img-src 'self' data:; \
+connect-src 'self'; \
+base-uri 'self'; \
+form-action 'self'; \
+object-src 'none'"
+
+awk -v js="$JS_FILE" -v css="$CSS_FILE" -v csp="$CSP" '
   /<!-- build:css -->/ { print "  <link rel=\"stylesheet\" href=\"" css "\" />"; skip=1; next }
   /<!-- \/build:css -->/ { skip=0; next }
   /<!-- build:js -->/ { print "  <script src=\"" js "\" defer></script>"; skip=1; next }
   /<!-- \/build:js -->/ { skip=0; next }
+  /<!-- build:csp -->/ { print "  <meta http-equiv=\"Content-Security-Policy\" content=\"" csp "\" />"; skip=1; next }
+  /<!-- \/build:csp -->/ { skip=0; next }
   !skip { print }
 ' index.html > "$OUT/index.html"
 
