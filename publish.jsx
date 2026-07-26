@@ -52,17 +52,29 @@ function signInWithGitHub() {
     );
     if (!popup) return reject(new Error('Popup blocked — allow popups and try again.'));
 
+    const brokerOrigin = new URL(CMS.broker).origin;
     let done = false;
+
+    // Handshake, in order:
+    //   1. the popup announces  'authorizing:github'  to us
+    //   2. we must echo it back — the popup is waiting for that
+    //   3. the popup then sends 'authorization:github:success:{...}'
+    // Skipping step 2 leaves the popup sitting on a blank page forever.
     const onMessage = (e) => {
+      if (e.origin !== brokerOrigin) return;      // ignore anything not from the broker
       if (typeof e.data !== 'string') return;
-      if (e.data === 'authorizing:github') return;
+
+      if (e.data === 'authorizing:github') {
+        popup.postMessage('authorizing:github', brokerOrigin);
+        return;
+      }
 
       const ok = e.data.match(/^authorization:github:success:(.+)$/);
       const err = e.data.match(/^authorization:github:error:(.+)$/);
       if (!ok && !err) return;
 
       done = true;
-      window.removeEventListener('message', onMessage);
+      cleanup();
       try { popup.close(); } catch (_) {}
 
       if (err) {
@@ -74,16 +86,26 @@ function signInWithGitHub() {
       catch (_) { reject(new Error('Could not read the sign-in response.')); }
     };
 
+    const cleanup = () => {
+      window.removeEventListener('message', onMessage);
+      clearInterval(poll);
+      clearTimeout(timer);
+    };
+
     window.addEventListener('message', onMessage);
-    popup.postMessage('authorizing:github', '*');
 
     const poll = setInterval(() => {
-      if (popup.closed && !done) {
-        clearInterval(poll);
-        window.removeEventListener('message', onMessage);
-        reject(new Error('Sign-in window was closed.'));
-      } else if (done) clearInterval(poll);
+      if (done) { clearInterval(poll); return; }
+      if (popup.closed) { cleanup(); reject(new Error('Sign-in window was closed.')); }
     }, 500);
+
+    // Never hang silently on a blank popup.
+    const timer = setTimeout(() => {
+      if (done) return;
+      cleanup();
+      try { popup.close(); } catch (_) {}
+      reject(new Error('Sign-in timed out. Check the callback URL on the OAuth App is exactly ' + CMS.broker + '/callback'));
+    }, 120000);
   });
 }
 
