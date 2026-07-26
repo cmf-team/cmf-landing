@@ -183,6 +183,12 @@ awk -v js="$JS_FILE" -v css="$CSS_FILE" -v csp="$CSP" '
 # ---------------------------------------------------------------------------
 cp -R assets "$OUT/assets"
 
+# content.json is the CMS-edited source of truth, fetched at runtime.
+[ -f content.json ] || { echo "error: content.json missing" >&2; exit 1; }
+node -e 'JSON.parse(require("fs").readFileSync("content.json","utf8"))' \
+  || { echo "error: content.json is not valid JSON" >&2; exit 1; }
+cp content.json "$OUT/content.json"
+
 if [ -n "$CUSTOM_DOMAIN" ]; then
   echo "$CUSTOM_DOMAIN" > "$OUT/CNAME"
   echo "  CNAME: $CUSTOM_DOMAIN"

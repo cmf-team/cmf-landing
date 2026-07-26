@@ -433,4 +433,15 @@ function Root() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById('app')).render(<Root />);
+// content.json is fetched before the first render, so every component below
+// can keep reading the store synchronously.
+initContent()
+  .then(() => {
+    ReactDOM.createRoot(document.getElementById('app')).render(<Root />);
+  })
+  .catch((err) => {
+    console.error(err);
+    document.getElementById('app').innerHTML =
+      '<div style="min-height:60vh;display:grid;place-items:center;font-family:system-ui;color:#8fa3c8">' +
+      'Could not load site content. Please refresh.</div>';
+  });
