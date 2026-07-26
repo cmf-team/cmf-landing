@@ -175,13 +175,41 @@ watch_run() {
     || die "workflow failed — see: gh run view $run_id --repo $REPO --log-failed"
 }
 
+# Pick a base URL that actually works right now. During a domain cutover two
+# things are temporarily false: HTTPS fails until GitHub issues the cert, and
+# the local resolver may still hold the old address. Pinning to a Pages IP and
+# falling back to http keeps verification honest instead of failing spuriously.
+resolve_base() {
+  BASE="$SITE_URL"; CURL_OPTS=""
+  [ -n "$CUSTOM_DOMAIN" ] || return 0
+
+  local gh_ip="${GH_PAGES_IPS%% *}" code
+  local pin="--resolve $CUSTOM_DOMAIN:443:$gh_ip --resolve $CUSTOM_DOMAIN:80:$gh_ip"
+
+  code="$(curl -s -o /dev/null -m 15 $pin -w '%{http_code}' "https://$CUSTOM_DOMAIN/" 2>/dev/null || true)"
+  if [ "$code" = "200" ]; then
+    BASE="https://$CUSTOM_DOMAIN"; CURL_OPTS="$pin"; return 0
+  fi
+
+  code="$(curl -s -o /dev/null -m 15 $pin -w '%{http_code}' "http://$CUSTOM_DOMAIN/" 2>/dev/null || true)"
+  if [ "$code" = "200" ]; then
+    BASE="http://$CUSTOM_DOMAIN"; CURL_OPTS="$pin"
+    warn "TLS certificate not issued yet — verifying over http for now"
+    return 0
+  fi
+
+  die "cannot reach $CUSTOM_DOMAIN over https or http (last code $code)"
+}
+
 verify_live() {
   step "Verify live"
 
+  resolve_base
+
   local code
-  code="$(curl -s -o /dev/null -w '%{http_code}' "$SITE_URL/")"
-  [ "$code" = "200" ] || die "$SITE_URL/ returned HTTP $code"
-  ok "200 $SITE_URL/"
+  code="$(curl -s -o /dev/null -m 15 $CURL_OPTS -w '%{http_code}' "$BASE/")"
+  [ "$code" = "200" ] || die "$BASE/ returned HTTP $code"
+  ok "200 $BASE/"
 
   # Hash-compare every built file against what is actually being served.
   # esbuild is version-pinned and CI runs `npm ci`, so CI output should be
@@ -195,7 +223,7 @@ verify_live() {
     while IFS= read -r f; do
       [ -n "$f" ] || continue
       local_h="$(sha256 < "dist/$f")"
-      live_h="$(curl -s "$SITE_URL/$f?cb=$(date +%s)-$RANDOM" | sha256)"
+      live_h="$(curl -s -m 30 $CURL_OPTS "$BASE/$f?cb=$(date +%s)-$RANDOM" | sha256)"
       [ "$local_h" = "$live_h" ] || mismatched="$mismatched $f"
     done <<EOF
 $files
@@ -278,8 +306,12 @@ domain_setup() {
   # DNS must point at GitHub BEFORE the custom domain is registered. Once it
   # is, GitHub 301s github.io -> the custom domain, so activating early takes
   # the site offline until DNS propagates. Check first, activate second.
+  # Ask public resolvers, not just the local one: a stale local cache would
+  # otherwise report the old address and block activation indefinitely.
   local resolved pointing=0
-  resolved="$(dig +short "$domain" A 2>/dev/null | tr '\n' ' ')"
+  resolved="$( { dig +short "$domain" A;
+                 dig @1.1.1.1 +short "$domain" A;
+                 dig @8.8.8.8 +short "$domain" A; } 2>/dev/null | sort -u | tr '\n' ' ')"
   for ip in $GH_PAGES_IPS; do
     case " $resolved " in *" $ip "*) pointing=1 ;; esac
   done
@@ -352,7 +384,8 @@ domain_status() {
   printf "\n%sDomain status%s for %s%s%s\n\n" "$B" "$X" "$C" "$CUSTOM_DOMAIN" "$X"
 
   local resolved
-  resolved="$(dig +short "$CUSTOM_DOMAIN" 2>/dev/null | tr '\n' ' ' || true)"
+  resolved="$( { dig @1.1.1.1 +short "$CUSTOM_DOMAIN" A;
+                 dig @8.8.8.8 +short "$CUSTOM_DOMAIN" A; } 2>/dev/null | sort -u | tr '\n' ' ' || true)"
   if [ -n "${resolved// /}" ]; then ok "DNS resolves: $resolved"; else warn "DNS does not resolve yet"; fi
 
   local cert enforced
@@ -376,8 +409,13 @@ domain_status() {
   fi
 
   local code
-  code="$(curl -s -o /dev/null -w '%{http_code}' "https://$CUSTOM_DOMAIN/" 2>/dev/null || echo 000)"
-  [ "$code" = "200" ] && ok "https://$CUSTOM_DOMAIN/ serves 200" || warn "https://$CUSTOM_DOMAIN/ returned $code"
+  code="$(curl -s -o /dev/null -m 15 -w '%{http_code}' "https://$CUSTOM_DOMAIN/" 2>/dev/null || true)"
+  [ -n "$code" ] || code="000"
+  if [ "$code" = "200" ]; then
+    ok "https://$CUSTOM_DOMAIN/ serves 200"
+  else
+    warn "https://$CUSTOM_DOMAIN/ not serving yet (code $code)"
+  fi
 }
 
 # ---------------------------------------------------------------------------
