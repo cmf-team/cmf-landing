@@ -16,6 +16,12 @@ OUT="dist"
 
 [ -f deploy.conf ] && . ./deploy.conf
 CUSTOM_DOMAIN="${CUSTOM_DOMAIN:-}"
+OAUTH_BROKER="${OAUTH_BROKER:-}"
+REPO_SLUG="${REPO:-}"
+if [ -z "$REPO_SLUG" ]; then
+  REPO_SLUG="$(git remote get-url origin 2>/dev/null \
+    | sed -E 's#^(git@|ssh://git@|https://)github\.com[:/]##; s#\.git$##')"
+fi
 
 ESBUILD="node_modules/.bin/esbuild"
 if [ ! -x "$ESBUILD" ]; then
@@ -157,12 +163,14 @@ CSS_FILE="$(cd "$OUT" && ls styles.*.css)"
 # the components use style={{...}}, which React renders as inline attributes.
 # Note: frame-ancestors is deliberately absent — browsers ignore it in a meta
 # tag, and GitHub Pages cannot set real HTTP headers.
+# connect-src must reach the GitHub API and the OAuth broker so the inline
+# editor can publish; it is scoped to exactly those, not opened up.
 CSP="default-src 'self'; \
 script-src 'self' https://cdn.jsdelivr.net; \
 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; \
 font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; \
 img-src 'self' data:; \
-connect-src 'self'; \
+connect-src 'self' https://api.github.com${OAUTH_BROKER:+ $OAUTH_BROKER}; \
 base-uri 'self'; \
 form-action 'self'; \
 object-src 'none'"
@@ -187,6 +195,12 @@ cp -R assets "$OUT/assets"
 # so the site keeps loading a single file.
 node scripts/merge-content.js || { echo "error: merging content/ failed" >&2; exit 1; }
 cp content.json "$OUT/content.json"
+
+# Runtime config for the inline editor. A separate file, not an inline script,
+# because the CSP forbids inline script.
+cat > "$OUT/cms-config.js" <<EOF
+window.__CMS__ = { repo: "$REPO_SLUG", branch: "master", broker: "${OAUTH_BROKER:-}" };
+EOF
 
 # CMS admin page. The broker URL is injected here rather than committed, so the
 # same source works before and after the Worker exists.

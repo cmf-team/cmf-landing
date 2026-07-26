@@ -39,8 +39,6 @@ async function initContent() {
 
 /* ---------- store ---------- */
 const LS_KEY = 'cmf_content_v1';
-const ADMIN_KEY = 'cmf_admin_authed';
-const ADMIN_PASSWORD = 'cmf-admin'; // prototype-grade gate only — NOT real security
 
 function loadContent() {
   try {
@@ -78,18 +76,38 @@ window.cmfStore = store;
 const AdminCtx = createContext(null);
 
 function AdminProvider({ children }) {
-  const [authed, setAuthed] = useS(() => sessionStorage.getItem(ADMIN_KEY) === '1');
+  // The token is held in memory only — never localStorage, where any script on
+  // the page could read a credential with write access to the repo.
+  const [token, setToken] = useS(null);
+  const [user, setUser] = useS(null);
   const [editing, setEditing] = useS(false);
   const [, force] = useS(0);
+
+  // Snapshot taken before any edit, so publishing can tell what actually
+  // changed rather than rewriting every file.
+  const baseline = useR(null);
+
   useE(() => store.subscribe(() => force(n => n + 1)), []);
+  useE(() => { if (!baseline.current) baseline.current = clone(store.data); }, []);
 
-  const login = (pw) => {
-    if (pw === ADMIN_PASSWORD) { sessionStorage.setItem(ADMIN_KEY, '1'); setAuthed(true); return true; }
-    return false;
+  const signIn = async () => {
+    const t = await signInWithGitHub();
+    const login = await whoAmI(t);
+    setToken(t); setUser(login);
+    return login;
   };
-  const logout = () => { sessionStorage.removeItem(ADMIN_KEY); setAuthed(false); setEditing(false); };
 
-  const value = { authed, editing, setEditing, login, logout };
+  const logout = () => { setToken(null); setUser(null); setEditing(false); };
+
+  const publish = (onProgress) => publishChanges(token, store.data, baseline.current, onProgress);
+
+  const markPublished = () => { baseline.current = clone(store.data); };
+
+  const value = {
+    authed: !!token, user, editing, setEditing,
+    signIn, logout, publish, markPublished,
+    hasChanges: () => JSON.stringify(store.data) !== JSON.stringify(baseline.current),
+  };
   return React.createElement(AdminCtx.Provider, { value }, children);
 }
 const useAdmin = () => useContext(AdminCtx);
@@ -216,5 +234,5 @@ function newProject() {
 
 Object.assign(window, {
   store, initContent, AdminProvider, AdminCtx, useAdmin, useEditing, useField, useList,
-  F, ItemControls, AddItem, PickField, ADMIN_PASSWORD, newProgram, newProject,
+  F, ItemControls, AddItem, PickField, newProgram, newProject,
 });

@@ -11,7 +11,7 @@
   <!-- Dev policy: permissive because Babel transpiles in-browser ('unsafe-eval')
        and React is fetched from unpkg. build.sh replaces this block with a
        strict production policy that allows neither. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self' https://api.github.com https://*.workers.dev; base-uri 'self'; form-action 'self'; object-src 'none'" />
   <!-- /build:csp -->
 
   <!-- Fonts: Space Grotesk (display), Geist (body), JetBrains Mono (mono) -->
@@ -30,6 +30,10 @@
 <body>
   <div id="app"></div>
 
+  <!-- Separate file rather than an inline script, which the CSP forbids.
+       build.sh regenerates it with the broker URL from deploy.conf. -->
+  <script src="cms-config.js"></script>
+
   <!-- build:js -->
   <!-- Dev only: React + Babel from CDN, JSX transpiled in-browser.
        ./build.sh replaces this whole block with a single bundled, minified
@@ -40,6 +44,7 @@
 
   <!-- App components -->
   <script type="text/babel" src="content.js"></script>
+  <script type="text/babel" src="publish.jsx"></script>
   <script type="text/babel" src="shared.jsx"></script>
   <script type="text/babel" src="admin.jsx"></script>
   <script type="text/babel" src="landing.jsx"></script>
