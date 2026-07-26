@@ -8,12 +8,12 @@
     "applyLabel": "Apply",
     "links": [
       {
-        "label": "Home",
-        "href": "#/"
-      },
-      {
         "label": "Programs",
         "href": "#/programs"
+      },
+      {
+        "label": "Home",
+        "href": "#/"
       },
       {
         "label": "Portfolio",
