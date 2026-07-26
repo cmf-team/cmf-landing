@@ -189,6 +189,23 @@ node -e 'JSON.parse(require("fs").readFileSync("content.json","utf8"))' \
   || { echo "error: content.json is not valid JSON" >&2; exit 1; }
 cp content.json "$OUT/content.json"
 
+# CMS admin page. The broker URL is injected here rather than committed, so the
+# same source works before and after the Worker exists.
+if [ -d admin ]; then
+  mkdir -p "$OUT/admin"
+  if [ -n "${OAUTH_BROKER:-}" ]; then
+    sed "s|__OAUTH_BROKER_URL__|$OAUTH_BROKER|g" admin/config.yml > "$OUT/admin/config.yml"
+    sed "s|__OAUTH_BROKER_CSP__|$OAUTH_BROKER|g" admin/index.html > "$OUT/admin/index.html"
+    echo "  admin: CMS wired to $OAUTH_BROKER"
+  else
+    # Strip the placeholders so the page still loads and reports the problem
+    # rather than shipping a literal __OAUTH_BROKER_URL__ into a CSP.
+    sed "s|__OAUTH_BROKER_URL__||g" admin/config.yml > "$OUT/admin/config.yml"
+    sed "s|__OAUTH_BROKER_CSP__||g" admin/index.html > "$OUT/admin/index.html"
+    echo "  admin: CMS shipped but OAUTH_BROKER is unset — login will not work"
+  fi
+fi
+
 if [ -n "$CUSTOM_DOMAIN" ]; then
   echo "$CUSTOM_DOMAIN" > "$OUT/CNAME"
   echo "  CNAME: $CUSTOM_DOMAIN"

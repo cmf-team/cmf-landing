@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>CMF — Content editor</title>
+  <link rel="icon" type="image/png" href="../assets/cmf-logo-white.png" />
+
+  <!--
+    This page gets its own CSP, deliberately looser than the site's: the editor
+    has to reach the GitHub API and render media previews from GitHub's CDNs.
+    It still forbids inline and eval'd script.
+
+    The CMS version is pinned. An unpinned CDN script here would be a supply
+    chain hole with commit access to the repo.
+  -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' https://cdn.jsdelivr.net;
+    style-src 'self' 'unsafe-inline';
+    font-src 'self' data:;
+    img-src 'self' data: blob: https://*.githubusercontent.com https://avatars.githubusercontent.com;
+    connect-src 'self' https://api.github.com https://cdn.jsdelivr.net __OAUTH_BROKER_CSP__;
+    frame-src 'self';
+    base-uri 'self';
+    form-action 'self';
+    object-src 'none'" />
+
+  <style>
+    body { margin: 0; background: #0a1628; color: #e8eefc;
+           font-family: system-ui, -apple-system, sans-serif; }
+    #nojs { padding: 48px; text-align: center; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div id="nojs">
+    <h1>Content editor</h1>
+    <p>Loading the editor…</p>
+    <p style="opacity:.6;font-size:14px">
+      If this message stays, the CMS bundle failed to load — check the browser console.
+    </p>
+  </div>
+
+  <script type="module"
+          src="https://cdn.jsdelivr.net/npm/@sveltia/cms@0.172.4/dist/sveltia-cms.js"></script>
+</body>
+</html>
