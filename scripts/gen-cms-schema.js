@@ -128,8 +128,8 @@ publish_mode: editorial_workflow
 media_folder: assets/uploads
 public_folder: /assets/uploads
 
-site_url: https://ynvrsty.com
-display_url: https://ynvrsty.com
+site_url: https://cmf.ynvrsty.com
+display_url: https://cmf.ynvrsty.com
 
 collections:
   - name: home

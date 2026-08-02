@@ -1,7 +1,12 @@
 # CMS setup
 
-The content editor at <https://ynvrsty.com/admin/> edits `content.json` and opens
+The content editor at <https://cmf.ynvrsty.com/admin/> edits `content.json` and opens
 a **pull request** for every change — nothing reaches the live site unreviewed.
+
+> This site lives on the `cmf.` subdomain, not the apex. `ynvrsty.com` is a
+> separate site in [`cmf-team/ynvrsty-home`](https://github.com/cmf-team/ynvrsty-home),
+> because a GitHub Pages repository can claim only one custom domain. Anywhere
+> below that names a domain, the subdomain is the one that matters.
 
 Signing in needs one piece of server-side code: GitHub's token endpoint refuses
 browser requests (CORS), and the OAuth client secret must never reach a browser.
@@ -32,7 +37,7 @@ Call this `<WORKER_URL>` below.
 | Field | Value |
 |---|---|
 | Application name | `CMF content editor` |
-| Homepage URL | `https://ynvrsty.com` |
+| Homepage URL | `https://cmf.ynvrsty.com` |
 | Authorization callback URL | `<WORKER_URL>/callback` |
 
 The callback must match **exactly**, including `/callback` — a mismatch is the
@@ -54,7 +59,7 @@ Cloudflare dashboard → Workers → `sveltia-cms-auth` → **Settings → Varia
 |---|---|---|
 | `GITHUB_CLIENT_ID` | plain text | from step 2 |
 | `GITHUB_CLIENT_SECRET` | **encrypted** | from step 2 |
-| `ALLOWED_DOMAINS` | plain text | `ynvrsty.com` |
+| `ALLOWED_DOMAINS` | plain text | `cmf.ynvrsty.com` |
 
 `ALLOWED_DOMAINS` matters: without it the Worker will hand a token to any origin
 that opens the popup. That token can write to the repo, and this repo deploys to
@@ -75,7 +80,7 @@ admin page's CSP `connect-src`.
 
 ## 5. Check it end to end
 
-1. <https://ynvrsty.com/admin/> → **Sign In with GitHub** → approve in the popup
+1. <https://cmf.ynvrsty.com/admin/> → **Sign In with GitHub** → approve in the popup
 2. Edit any field, then **Save**
 3. A PR appears at <https://github.com/cmf-team/cmf-landing/pulls>
 4. Approve and merge it
